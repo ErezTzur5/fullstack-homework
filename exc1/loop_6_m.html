@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>loop_6_m</title>
+</head>
+
+<body>
+    <h1>loop_6_m</h1>
+</body>
+
+<script>
+    let count = 0;
+    let numbers = [];
+
+    while (count < 5) {
+        let number = parseInt(prompt("Please enter a number: "));
+        numbers.push(number);
+        count++;
+    }
+
+    let maxNumber = Math.max(...numbers);
+    let minNumber = Math.min(...numbers);
+
+    console.log("Highest number: " + maxNumber);
+    console.log("Lowest number: " + minNumber);
+
+</script>
+
+</html>

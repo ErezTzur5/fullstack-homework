@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>loop_8_m</title>
+</head>
+
+<body>
+    <h1>loop_8_m</h1>
+</body>
+
+
+
+<script>
+    console.log("<!-- loop_5_m -->")
+    let number = parseInt(prompt("Please enter a number to calculate its factorial: "));
+    let factorial = 1;
+
+    do {
+        factorial *= number;
+        number--;
+    }
+    while (number > 1)
+    console.log("The factorial of the number is: " + factorial);
+</script>
+
+<script>
+    console.log("<!-- loop_6_m -->")
+    let count = 0;
+    let numbers = [];
+    do {
+        let number = parseInt(prompt("Please enter a number: "));
+        numbers.push(number);
+        count++;
+    }
+    while (count < 5)
+
+    let maxNumber = Math.max(...numbers);
+    let minNumber = Math.min(...numbers);
+
+    console.log("Highest number: " + maxNumber);
+    console.log("Lowest number: " + minNumber);
+</script>
+
+
+</html>

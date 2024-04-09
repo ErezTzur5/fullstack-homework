@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>loop_9_m</title>
+</head>
+
+<body>
+    <h1>loop_9_m</h1>
+</body>
+
+
+
+<script>
+    let numbers = [];
+    let number;
+
+    do {
+        number = parseInt(prompt("Please enter a number: "));
+        if (number > 0) {
+            numbers.push(number);
+        }
+    } while (number > 0);
+
+    if (numbers.length > 0) {
+        let maxNumber = Math.max(...numbers);
+        let minNumber = Math.min(...numbers);
+
+        console.log("Highest number: " + maxNumber);
+        console.log("Lowest number: " + minNumber);
+    } else {
+        console.log("No valid numbers entered.");
+    }
+</script>
+
+
+
+</html>

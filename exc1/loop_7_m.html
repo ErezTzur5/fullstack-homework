@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>loop_7_m</title>
+</head>
+
+<body>
+    <h1>loop_7_m</h1>
+</body>
+
+
+<script>
+    console.log('<!-- loop_1_m -->');
+    for (let counter = 0; counter <= 100; counter++) {
+        console.log(counter);
+    }
+</script>
+
+<script>
+    console.log('<!-- loop_2_m -->');
+    window.alert("Please enter 5 numbers to calculate its sum and average!");
+    let sum = 0
+    for (let count = 0; count < 5; count++) {
+        let number = parseInt(prompt("Please enter number: "));
+        sum += number;
+    }
+    let average = sum / 5;
+
+    console.log("Sum: " + sum);
+    console.log("Average: " + average);
+
+</script>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>loop_11_m</title>
+</head>
+
+<body>
+    <h1>loop_11_m</h1>
+</body>
+
+
+
+<script>
+    let startTime = new Date().getTime(); //milliseconds
+    let tries = 0
+    let x = Math.random() * 99;
+    let round = Math.round(x)
+    console.log(round);
+
+    while (true) {
+        number = parseInt(prompt("Guess the number from 0-99: "));
+        if (number == round) {
+            window.alert("You have guessed the generated number!");
+            break
+        }
+        if (number < round) {
+            window.alert("You UNDER the generated number");
+        }
+
+        if (number > round) {
+            window.alert("You ABOVE the generated number");
+        }
+        tries++;
+    }
+
+    let endTime = new Date().getTime();
+    let totalTime = (endTime - startTime) / 1000; // calculate the total time in seconds
+
+    console.log('Number of tries for this run:', tries);
+    console.log('Total time taken:', totalTime, 'seconds');
+
+</script>
+
+
+
+</html>
