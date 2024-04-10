@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>array_4_m</title>
+</head>
+
+<body>
+    <h1>array_4_m</h1>
+</body>
+<script>
+    function getUnique(numbers_array) {
+        let uniqueNumbers = [];
+        for (let i = 0; i < numbers_array.length; i++) {
+            let num = numbers_array[i];
+            let count = 0;
+            for (let j = 0; j < numbers_array.length; j++) {
+                if (numbers_array[j] === num) { // checks how many time the same digit is appear , whoever stays with 1 will be pushed into the uniqueNumbers array!
+                    count++;
+                }
+            }
+            if (count === 1) {
+                uniqueNumbers.push(num);
+            }
+        }
+        return uniqueNumbers;
+    }
+
+    let numbers_array = [1, 6, 7, 6, 8, 1];
+    console.log(getUnique(numbers_array));
+</script>
+
+</html>

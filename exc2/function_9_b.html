@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>function_9_b </title>
+</head>
+
+<body>
+    <h1>function_9_b </h1>
+</body>
+<script>
+    function printFibonacciSeries(count) {
+        let a = 1; // we start with 1
+        let b = 0;// holds the previous number 
+        let holder; // holder variable
+        let result = '';
+
+        for (let i = 0; i < count; i++) {
+            result += a + ' ';
+            holder = a;
+            a = a + b;
+            b = holder;
+        }
+
+        console.log(result);
+    }
+
+
+    // printFibonacciSeries(3);
+    printFibonacciSeries(5);
+
+</script>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js_string_3_b
+    </title>
+</head>
+
+<body>
+    <h1>js_string_3_b
+    </h1>
+</body>
+<script>
+    function stringToNumbersArray(str) {
+        let splitArray = str.split(",");
+        let numbersArray = [];
+
+        for (let i = 0; i < splitArray.length; i++) {
+            let trimmedNum = splitArray[i].trim();
+            let parsedNum = parseInt(trimmedNum);
+            numbersArray.push(parsedNum);
+        }
+
+        return numbersArray;
+    }
+
+
+    let numbers = stringToNumbersArray("12,3,455");
+    console.log(numbers);
+
+</script>
+
+</html>

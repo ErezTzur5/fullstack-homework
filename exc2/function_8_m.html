@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>function_8_m</title>
+</head>
+
+<h1>function_8_m</h1>
+
+<body>
+
+</body>
+<script>
+    function calculateDigitSum(numbers) {
+        let strNum = numbers.toString();
+        let results = [];
+
+        for (let i = 0; i < strNum.length; i++) {
+            results.push(+strNum[i]);
+        }
+        console.log(results);
+
+        let total = 0;
+        for (let i of results) {
+            total += i;
+        }
+        console.log(total);
+    }
+
+    calculateDigitSum(1239);
+
+</script>
+
+</html>

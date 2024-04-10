@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>array_2.5_m</title>
+</head>
+
+<body>
+    <h1>array_2.5_m</h1>
+</body>
+
+<script>
+    let numbers_array = [1, 5, 7, 8, 9, 4, 10, 50, 89, 88, 1005, 5555]
+
+    function checkNumInArray(numbers_array, number_check) {
+        for (let index = 0; index < numbers_array.length; index++) {
+            console.log(numbers_array[index]);
+            if (number_check == numbers_array[index]) {
+                return (true)
+
+            }
+        }
+        return (false)
+    }
+    console.log(checkNumInArray(numbers_array, 55));
+</script>
+
+</html>

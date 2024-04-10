@@ -7,22 +7,29 @@
     <title>function_7_m</title>
 </head>
 
-<h1>function_7_m</h1> SEE FUNCTION 1 in functions folder
+<h1>function_7_m</h1>
 
 <body>
 
 </body>
 <script>
-    function Adder(num1, num2) {
-        console.log(num1, num2);
-        let num3 = ''
-        num3 = num1
-        num1 = num2
-        num2 = num3
-        return [num1, num3]
+    function printTriangularPattern(number) {
 
+        // loop through each row
+        for (let i = 1; i <= number; i++) {
+            let row = '';
+            // add spaces to align the asterisk
+            for (let j = 1; j <= number - i; j++) {
+                row += ' ';
+            }
+            // add asterisk to the row
+            for (let k = 1; k <= i; k++) {
+                row += '* ';
+            }
+            console.log(row);
+        }
     }
-    console.log(Adder(5, 10));
+    printTriangularPattern(20)
 </script>
 
 </html>
