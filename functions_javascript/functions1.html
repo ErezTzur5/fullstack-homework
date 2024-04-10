@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+
+    function triangleAsterisk(width, height) {
+        if (isNaN(width) || isNaN(height) || width < 1 || height < 1) {
+            alert('Please enter valid positive numbers for width and height');
+        }
+
+        let result = ''; // Initialize an empty string to store the result
+
+        for (let i = 1; i <= height; i++) {
+            let row = '';
+            // add asterisks to the row
+            for (let k = 1; k <= width; k++) {
+                row += '*';
+            }
+            result += row + '\n'; // Add the row to the result and move to the next line
+        }
+
+        return result; // Return the result string
+    }
+
+    console.log(triangleAsterisk(5, 4));
+
+</script>
+
+</html>

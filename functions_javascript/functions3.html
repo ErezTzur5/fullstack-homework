@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    function SumNum(number) {
+        let sum = 0
+        for (let count = 0; count <= number; count++) {
+            sum += count;
+        }
+        return sum
+    }
+    console.log(SumNum(5));
+</script>
+
+<script>
+    function reverseString(item) {
+        item_length = item.length;
+        let reverse_item = "";
+        for (let i = item_length - 1; i >= 0; --i) {
+            reverse_item += item[i];
+        }
+
+        return reverse_item;
+    }
+
+    let a = "hello";
+    // console.log(reverseString(a));
+</script>
+
+<script>
+    function reverseString2(item) {
+        let reverseItem = "";
+        for (let char of item) {
+            reverseItem = char + reverseItem;
+        }
+        return reverseItem;
+    }
+
+    let b = "radar";
+    // console.log(reverseString2(b));
+
+</script>
+
+<script>
+    function check_isPalindrome(string, reverseS) {
+        if (string == reverseS) {
+            return Boolean(true)
+        }
+        else {
+            return Boolean(false)
+        }
+
+    }
+    let c = "hello";
+    console.log(check_isPalindrome(c, reverseString2(c)));
+</script>
+
+</html>
