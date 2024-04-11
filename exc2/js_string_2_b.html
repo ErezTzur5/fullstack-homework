@@ -13,12 +13,12 @@
 <script>
 
     function stringToNumbersArray(str) {
-        var splitArray = str.split(",");
-        var numbersArray = [];
+        let splitArray = str.split(",");
+        let numbersArray = [];
 
-        for (var i = 0; i < splitArray.length; i++) {
-            var trimmedNum = splitArray[i].trim();
-            var parsedNum = parseInt(trimmedNum);
+        for (let i = 0; i < splitArray.length; i++) {
+            let trimmedNum = splitArray[i].trim();
+            let parsedNum = parseInt(trimmedNum);
             numbersArray.push(parsedNum);
         }
 
