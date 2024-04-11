@@ -11,8 +11,9 @@
     <h1>array_4_m</h1>
 </body>
 <script>
+
     function getUnique(numbers_array) {
-        let uniqueNumbers = [];
+        let uniqueCounter = 0
         for (let i = 0; i < numbers_array.length; i++) {
             let num = numbers_array[i];
             let count = 0;
@@ -22,14 +23,15 @@
                 }
             }
             if (count === 1) {
-                uniqueNumbers.push(num);
+                uniqueCounter++;
             }
         }
-        return uniqueNumbers;
+        return uniqueCounter;
     }
 
     let numbers_array = [1, 6, 7, 6, 8, 1];
-    console.log(getUnique(numbers_array));
+    let Unique = getUnique(numbers_array)
+    console.log(`Number of non-duplicate : ${Unique}`);
 </script>
 
 </html>
