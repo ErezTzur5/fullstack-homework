@@ -86,17 +86,17 @@ function isWin() {
 }
 
 function validateInput(input) {
-    if (input < 0 || input > board.length) {
-        alert(`Please enter a number between 0 ${board.length}`);
+    if (input < 0 || input >= board.length) {
+        console.log(`Please enter a number between 0 ${board.length}`);
         return false;
     }
     let inputNumber = Number(input)
     if (isNaN(inputNumber)) {
-        alert("Please enter a number and not string");
+        console.log("Please enter a number and not string");
         return false;
     }
     if (!Number.isInteger(inputNumber)) {
-        alert("Please enter an integer and not float");
+        console.log("Please enter an integer and not float");
         return false;
 
     }
@@ -107,25 +107,26 @@ function validateInput(input) {
 function xTurn() {
     let row = parseFloat(prompt('Enter the row: '));
     if (!validateInput(row)) {
-        xTurn();
+        return xTurn();
     }
     let column = parseFloat(prompt('Enter the column: '));
     if (!validateInput(column)) {
-        xTurn();
+        return xTurn();
     }
 
     if (board[row][column] === '[]') {
         board[row][column] = player_symbols[currentPlayer];
-        alert(board.join("\n"));
+
+        console.log(board.join("\n"));
         if (isWin()) {
-            alert(`${currentPlayer} wins!`);
+            console.log(`${currentPlayer} wins!`);
             scores[currentPlayer]++;
             return true;
         }
         switchPlayer();
     } else {
-        alert('This place is already taken');
-        xTurn();
+        console.log('This place is already taken');
+        return xTurn();
     }
 
     return false;
@@ -135,25 +136,27 @@ function xTurn() {
 function oTurn() {
     let row = parseFloat(prompt('Enter the row: '));
     if (!validateInput(row)) {
-        oTurn();
+        return oTurn();
     }
     let column = parseFloat(prompt('Enter the column: '));
     if (!validateInput(column)) {
-        oTurn();
+        return oTurn();
     }
 
     if (board[row][column] === '[]') {
         board[row][column] = player_symbols[currentPlayer];
-        alert(board.join("\n"));
+
+        console.log(board.join("\n"));
+
         if (isWin()) {
-            alert(`${currentPlayer} wins!`);
+            console.log(`${currentPlayer} wins!`);
             scores[currentPlayer]++;
             return true;
         }
         switchPlayer();
     } else {
-        alert('This place is already taken');
-        oTurn();
+        console.log('This place is already taken');
+        return oTurn();
     }
 
     return false;
@@ -164,7 +167,7 @@ function printStats() {
     for (let player in scores) {
         stats += `${player}: ${scores[player]}\n`;
     }
-    alert(stats);
+    console.log(stats);
     // prints the scoreboard when the game is over or when starting a new game
 }
 
@@ -172,17 +175,17 @@ function startAnotherGame() {
     printStats();
     let ask = prompt("Do you want to start new game?: (Y/N)")
     if (ask.toLowerCase() == 'y') {
-        alert("New game Starting ...")
+        console.log("New game Starting ...")
         startGame();
     }
     if (ask.toLowerCase() == 'n') {
-        alert("Game Stopped")
+        console.log("Game Stopped")
         printStats();
         scores = {};
         return;
     }
     else {
-        alert("Please input Y/N")
+        console.log("Please input Y/N")
         startAnotherGame()
 
     }
@@ -195,14 +198,14 @@ function chooseSymbol(playerName) {
 
     }
     else {
-        alert("Please input X/O!")
+        console.log("Please input X/O!")
         chooseSymbol(playerName)
     }
     // let the user choose between X and O
 }
 
 function startGame() {
-    alert('Welcome to Tic-Tac-Toe');
+    console.log('Welcome to Tic-Tac-Toe');
 
     player_x_name = prompt('Please enter name for the first player: ')
     player_x_name = player_x_name.charAt(0).toUpperCase() + player_x_name.slice(1);
@@ -227,7 +230,7 @@ function startGame() {
     let size_board = parseInt(prompt('Enter the size of the board: '));
 
     CreateBoard(size_board);
-    alert(board.join("\n"));
+    console.log(board.join("\n"));
 
     let gameOver = false;
     while (!gameOver) {
