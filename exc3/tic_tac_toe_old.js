@@ -1,14 +1,16 @@
 let board;
 let player_x_name;
-let player_o_name;
-let currentPlayer;
-let player_symbols = {};
+let player_y_name;
+let currentPlayer = player_x_name;
 
-let scores = {};
 
 function switchPlayer() {
-    currentPlayer = currentPlayer === player_x_name ? player_o_name : player_x_name;
+    currentPlayer = currentPlayer === player_x_name ? player_y_name : player_x_name;
+    // this function checks if the current player is equal  to the currect player
+    // if it is , its assings the name of the second player that give me the option to switch between players easliy
 }
+
+
 
 function CheckRow(row_number) {
     let row = board[row_number];
@@ -106,12 +108,10 @@ function xTurn() {
     }
 
     if (board[row][column] === '[]') {
-        board[row][column] = player_symbols[currentPlayer];
+        board[row][column] = 'x';
         alert(board.join("\n"));
         if (isWin()) {
-            // alert(`${player_symbols[currentPlayer]} wins!`);
-            alert(`${currentPlayer} wins!`);
-            scores[currentPlayer]++;
+            alert(`${player_x_name} wins!`);
             return true;
         }
         switchPlayer();
@@ -134,12 +134,10 @@ function oTurn() {
     }
 
     if (board[row][column] === '[]') {
-        board[row][column] = player_symbols[currentPlayer];
+        board[row][column] = 'o';
         alert(board.join("\n"));
         if (isWin()) {
-            // alert(`${player_symbols[currentPlayer]} wins!`);
-            alert(`${currentPlayer} wins!`);
-            scores[currentPlayer]++;
+            alert(`${player_y_name} wins!`);
             return true;
         }
         switchPlayer();
@@ -151,16 +149,8 @@ function oTurn() {
     return false;
 }
 
-function printStats() {
-    let stats = 'Scores\n';
-    for (let player in scores) {
-        stats += `${player}: ${scores[player]}\n`;
-    }
-    alert(stats);
-}
 
 function startAnotherGame() {
-    printStats();
     let ask = prompt("Do you want to start new game?: (Y/N)")
     if (ask.toLowerCase() == 'y') {
         alert("New game Starting ...")
@@ -168,25 +158,7 @@ function startAnotherGame() {
     }
     if (ask.toLowerCase() == 'n') {
         alert("Game Stopped")
-        printStats();
-        scores = {};
         return;
-    }
-    else {
-        alert("Please input Y/N")
-        startAnotherGame()
-
-    }
-}
-function chooseSymbol(playerName) {
-    let choice = prompt(`${playerName}, do you want to play as X or O? (X/O)`);
-    if (choice.toUpperCase() == 'X' || choice.toUpperCase() == 'O') {
-        return choice.toUpperCase();
-
-    }
-    else {
-        alert("Please input X/O!")
-        chooseSymbol(playerName)
     }
 
 }
@@ -194,38 +166,21 @@ function chooseSymbol(playerName) {
 function startGame() {
     alert('Welcome to Tic-Tac-Toe');
 
-    player_x_name = prompt('Please enter name for the first player: ')
-    player_x_name = player_x_name.charAt(0).toUpperCase() + player_x_name.slice(1);
+    player_x_name = prompt('Please enter name for the first player(X): ')
 
-    player_o_name = prompt('Please enter name for the second player: ')
-    player_o_name = player_o_name.charAt(0).toUpperCase() + player_o_name.slice(1);
-
-    let xChoice = chooseSymbol(player_x_name);
-    let oChoice = xChoice === 'X' ? 'O' : 'X';
-
-    currentPlayer = xChoice === 'X' ? player_x_name : player_o_name;
-    player_symbols[player_x_name] = xChoice;
-    player_symbols[player_o_name] = oChoice;
-
-    if (!scores[player_x_name]) {
-        scores[player_x_name] = 0;
-    }
-    if (!scores[player_o_name]) {
-        scores[player_o_name] = 0;
-    }
+    player_y_name = prompt('Please enter name for the second player(Y): ')
 
     let size_board = parseInt(prompt('Enter the size of the board: '));
 
     CreateBoard(size_board);
     alert(board.join("\n"));
 
+
     let gameOver = false;
     while (!gameOver) {
-        if (currentPlayer === player_x_name) {
-            gameOver = xTurn();
-        } else {
-            gameOver = oTurn();
-        }
+        gameOver = xTurn();
+        if (gameOver) break;
+        gameOver = oTurn();
     }
 
     if (gameOver) {
@@ -237,4 +192,3 @@ function startGame() {
 startGame();
 
 
-startGame();
