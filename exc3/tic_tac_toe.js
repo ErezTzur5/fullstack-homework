@@ -8,6 +8,8 @@ let scores = {};
 
 function switchPlayer() {
     currentPlayer = currentPlayer === player_x_name ? player_o_name : player_x_name;
+    // this function checks if the current player is equal  to the currect player
+    // if it is , its assings the name of the second player that give me the option to switch between players easliy
 }
 
 function CheckRow(row_number) {
@@ -19,6 +21,7 @@ function CheckRow(row_number) {
         }
     }
     return true;
+    // checks for win in the row
 }
 
 function CheckColumn(column_number) {
@@ -29,6 +32,7 @@ function CheckColumn(column_number) {
         }
     }
     return true;
+    // checks for win in the column
 }
 
 function CheckDiagonal() {
@@ -39,6 +43,7 @@ function CheckDiagonal() {
         }
     }
     return true;
+    // checks for win in the diagonal
 }
 
 function CheckReverseDiagonal() {
@@ -49,6 +54,7 @@ function CheckReverseDiagonal() {
         }
     }
     return true;
+    // checks for win in the diagonal in reverse order
 }
 
 function CreateBoard(number) {
@@ -61,6 +67,7 @@ function CreateBoard(number) {
         board.push(row)
     }
     return board;
+    // gets from the user the size of the board and creates the board
 }
 
 function isWin() {
@@ -75,6 +82,7 @@ function isWin() {
     }
 
     return false;
+    // wraps all the wins options into a single function and call the function in every move in the game
 }
 
 function validateInput(input) {
@@ -93,6 +101,7 @@ function validateInput(input) {
 
     }
     return true;
+    // wraps all the validation options into a single function and call the function in every move in the game to make sure user input is valid
 }
 
 function xTurn() {
@@ -109,7 +118,6 @@ function xTurn() {
         board[row][column] = player_symbols[currentPlayer];
         alert(board.join("\n"));
         if (isWin()) {
-            // alert(`${player_symbols[currentPlayer]} wins!`);
             alert(`${currentPlayer} wins!`);
             scores[currentPlayer]++;
             return true;
@@ -121,6 +129,7 @@ function xTurn() {
     }
 
     return false;
+
 }
 
 function oTurn() {
@@ -137,7 +146,6 @@ function oTurn() {
         board[row][column] = player_symbols[currentPlayer];
         alert(board.join("\n"));
         if (isWin()) {
-            // alert(`${player_symbols[currentPlayer]} wins!`);
             alert(`${currentPlayer} wins!`);
             scores[currentPlayer]++;
             return true;
@@ -157,6 +165,7 @@ function printStats() {
         stats += `${player}: ${scores[player]}\n`;
     }
     alert(stats);
+    // prints the scoreboard when the game is over or when starting a new game
 }
 
 function startAnotherGame() {
@@ -177,6 +186,7 @@ function startAnotherGame() {
         startAnotherGame()
 
     }
+    // starts a new game
 }
 function chooseSymbol(playerName) {
     let choice = prompt(`${playerName}, do you want to play as X or O? (X/O)`);
@@ -188,7 +198,7 @@ function chooseSymbol(playerName) {
         alert("Please input X/O!")
         chooseSymbol(playerName)
     }
-
+    // let the user choose between X and O
 }
 
 function startGame() {
@@ -233,8 +243,5 @@ function startGame() {
         startAnotherGame()
     }
 }
-
-startGame();
-
 
 startGame();
