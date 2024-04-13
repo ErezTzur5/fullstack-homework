@@ -104,6 +104,25 @@ function validateInput(input) {
     // wraps all the validation options into a single function and call the function in every move in the game to make sure user input is valid
 }
 
+function printBoard() {
+    for (let row = 0; row < board.length; row++) {
+        for (let column = 0; column < board.length; column++) {
+            if (board[row][column] === 'X') {
+                console.log(`%c X`, 'color:red;');
+            }
+            else if (board[row][column] === 'O') {
+                console.log(`%c O`, 'color:blue;');
+            }
+            else {
+                console.log('[]')
+            }
+
+        }
+        console.log(("\n"))
+    }
+
+}
+
 function xTurn() {
     let row = parseFloat(prompt('Enter the row: '));
     if (!validateInput(row)) {
@@ -115,9 +134,12 @@ function xTurn() {
     }
 
     if (board[row][column] === '[]') {
-        board[row][column] = player_symbols[currentPlayer];
+        let n = '\x1b[34mX\x1b[0m'
+        board[row][column] = n;
+
 
         console.log(board.join("\n"));
+
         if (isWin()) {
             console.log(`${currentPlayer} wins!`);
             scores[currentPlayer]++;
@@ -144,9 +166,11 @@ function oTurn() {
     }
 
     if (board[row][column] === '[]') {
-        board[row][column] = player_symbols[currentPlayer];
+        let n = '\x1b[31mO\x1b[0m'
+        board[row][column] = n;
 
         console.log(board.join("\n"));
+        // printBoard()
 
         if (isWin()) {
             console.log(`${currentPlayer} wins!`);
