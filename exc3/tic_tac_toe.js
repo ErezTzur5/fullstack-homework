@@ -170,7 +170,7 @@ function oTurn() {
         board[row][column] = n;
 
         console.log(board.join("\n"));
-        // printBoard()
+
 
         if (isWin()) {
             console.log(`${currentPlayer} wins!`);
