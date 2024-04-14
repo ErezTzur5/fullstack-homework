@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>array_operation_4</title>
+  </head>
+  <body>
+    <script>
+      function deleteBook(books, bookName) {
+        let index = books.findIndex((book) => book.name === bookName);
+        if (index !== -1) {
+          books.splice(index, 1);
+          return true;
+        }
+        return false;
+      }
+
+      let books = [
+        { name: "book1", pages: 30 },
+        { name: "book2", pages: 40 },
+        { name: "book3", pages: 50 },
+        { name: "book4", pages: 60 },
+        { name: "book5", pages: 70 },
+      ];
+
+      console.log(deleteBook(books, "book3")); // true
+      console.log(deleteBook(books, "book6")); // false
+
+      console.log(books);
+    </script>
+  </body>
+</html>

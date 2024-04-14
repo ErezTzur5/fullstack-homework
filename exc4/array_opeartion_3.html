@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>array_opeartion_3</title>
+</head>
+<body>
+    <script>
+        let books = [
+            { name: "book1", pages: 30 },
+            { name: "book2", pages: 40 },
+            { name: "book3", pages: 50 },
+            { name: "book4", pages: 60 },
+            { name: "book5", pages: 70 },
+        ];
+        function updateBookPages(books,bookName,pageNumber) {
+            let book = books.find(b => b.name === bookName);
+            book.pages = pageNumber;
+            if (book === undefined) {
+                return null;
+            }
+            return book;
+        }
+        
+        console.log(updateBookPages(books,"book1",500));
+    </script>
+</body>
+</html>

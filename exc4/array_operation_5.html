@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>array_operation_4</title>
+  </head>
+  <body>
+    <script>
+      let numbers = [1, 2, 3, 4]; //
+
+      let playerNumber = parseInt(prompt("Please input a number: "));
+
+      function addToArray(numbers, playerNumber) {
+        let index = numbers.indexOf(playerNumber);
+        if (index !== -1) {
+          numbers[index]++;
+        } else {
+          console.log("Number not found!");
+        }
+      }
+
+      addToArray(numbers, playerNumber);
+
+      console.log(numbers);
+    </script>
+  </body>
+</html>
