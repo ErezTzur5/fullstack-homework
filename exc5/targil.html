@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <label for="num1">Insert Number</label>
+    <input type="number" id="num1" />
+    <label for="num2">Insert Number</label>
+    <input type="number" id="num2" />
+    <button onclick="addNumbers()">+</button>
+    <button onclick="minusNumbers()">-</button>
+    <button onclick="multiplicationNumbers()">*</button>
+    <button onclick="divisionNumbers()">/</button>
+    <br />
+    <p id="result"></p>
+    <button onclick="showHistory()">History</button>
+    <ul id="history" style="display: none"></ul>
+    <script>
+      const historyList = document.querySelector("#history");
+
+      function addHistory(action) {
+        const li = document.createElement("li");
+        li.textContent = action;
+        historyList.appendChild(li);
+      }
+
+      function showHistory() {
+        historyList.style.display = "block";
+      }
+
+      function addNumbers() {
+        const elemNum1 = document.querySelector("#num1");
+        const elemNum2 = document.querySelector("#num2");
+        const elemResult = document.querySelector("#result");
+        const sum = elemNum1.valueAsNumber + elemNum2.valueAsNumber;
+        elemResult.innerText = sum;
+        addHistory(
+          `${elemNum1.valueAsNumber} + ${elemNum2.valueAsNumber} = ${sum}`
+        );
+      }
+
+      function minusNumbers() {
+        const elemNum1 = document.querySelector("#num1");
+        const elemNum2 = document.querySelector("#num2");
+        const elemResult = document.querySelector("#result");
+        const minus = elemNum1.valueAsNumber - elemNum2.valueAsNumber;
+        elemResult.innerText = minus;
+        addHistory(
+          `${elemNum1.valueAsNumber} - ${elemNum2.valueAsNumber} = ${minus}`
+        );
+      }
+
+      function multiplicationNumbers() {
+        const elemNum1 = document.querySelector("#num1");
+        const elemNum2 = document.querySelector("#num2");
+        const elemResult = document.querySelector("#result");
+        const multiplication = elemNum1.valueAsNumber * elemNum2.valueAsNumber;
+        elemResult.innerText = multiplication;
+        addHistory(
+          `${elemNum1.valueAsNumber} * ${elemNum2.valueAsNumber} = ${multiplication}`
+        );
+      }
+
+      function divisionNumbers() {
+        const elemNum1 = document.querySelector("#num1");
+        const elemNum2 = document.querySelector("#num2");
+        const elemResult = document.querySelector("#result");
+        const division = elemNum1.valueAsNumber / elemNum2.valueAsNumber;
+        elemResult.innerText = division;
+        addHistory(
+          `${elemNum1.valueAsNumber} / ${elemNum2.valueAsNumber} = ${division}`
+        );
+      }
+    </script>
+  </body>
+</html>
