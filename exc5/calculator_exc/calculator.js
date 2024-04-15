@@ -1,13 +1,14 @@
 
 let screen = document.querySelector('.screen');
 let operator;
-let screenVal1;
-let screenVal2;
+let number1;
+let number2;
+screen.value = 0
 
 
 function addToScreen(value) {
   screen.value += value;
-  console.log(screen.value);
+
 }
 
 function addDotToScreen() {
@@ -16,20 +17,28 @@ function addDotToScreen() {
 }
     
 function setOperator(op) {
-    operator = op;
-    screenVal1 = screen.value;
-    screen.value = '';
-    console.log(operator);
+    if (operator){
+        calculate()
+        operator = op;
+        number1 = screen.value;
+        screen.value = '';
+    }
+    else{
+        operator = op;
+        number1 = screen.value;
+        screen.value = '';
+    }
 }
 
 
 
+
 function calculate() {
-    num1 = Number(screenVal1)
-    screenVal2 = screen.value
-    num2 = Number(screenVal2)
+    num1 = Number(number1)
+    number2 = screen.value
+    num2 = Number(number2)
     
-    let result = '';
+    let result;
     if (operator === '+') {
         const sum = num1 + num2
         screen.value = sum;
@@ -50,4 +59,7 @@ function calculate() {
 
 function clearScreen() {
   screen.value = '';
+  number1 = '';
+  number2 = 0;
+  operator = '';
 }

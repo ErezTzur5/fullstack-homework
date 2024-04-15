@@ -7,26 +7,30 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <div class="calculator">
-      <input type="text" class="screen" disabled />
-      <div class="buttons">
-        <button class="btn" onclick="addToScreen(0)">0</button>
-        <button class="btn" onclick="addToScreen(1)">1</button>
-        <button class="btn" onclick="addToScreen(2)">2</button>
-        <button class="btn" onclick="addToScreen(3)">3</button>
-        <button class="btn" onclick="addToScreen(4)">4</button>
-        <button class="btn" onclick="addToScreen(5)">5</button>
-        <button class="btn" onclick="addToScreen(6)">6</button>
-        <button class="btn" onclick="addToScreen(7)">7</button>
-        <button class="btn" onclick="addToScreen(8)">8</button>
-        <button class="btn" onclick="addToScreen(9)">9</button>
-        <button class="btn" onclick="addDotToScreen('.')">.</button>
-        <button class="btn" onclick="setOperator('+')">+</button>
-        <button class="btn" onclick="setOperator('-')">-</button>
-        <button class="btn" onclick="setOperator('*')">*</button>
-        <button class="btn" onclick="setOperator('/')">/</button>
-        <button class="btn" onclick="calculate()">=</button>
-        <button class="btn" onclick="clearScreen()">CE</button>
+    <div class="flex-wrapper">
+      <div>
+        <div class="calculator">
+          <input type="text" class="screen" disabled />
+          <div class="buttons">
+            <button class="btn" onclick="clearScreen()">AC</button>
+            <button class="btn" onclick="addToScreen(0)">0</button>
+            <button class="btn" onclick="addToScreen(1)">1</button>
+            <button class="btn" onclick="addToScreen(2)">2</button>
+            <button class="btn" onclick="addToScreen(3)">3</button>
+            <button class="btn" onclick="addToScreen(4)">4</button>
+            <button class="btn" onclick="addToScreen(5)">5</button>
+            <button class="btn" onclick="addToScreen(6)">6</button>
+            <button class="btn" onclick="addToScreen(7)">7</button>
+            <button class="btn" onclick="addToScreen(8)">8</button>
+            <button class="btn" onclick="addToScreen(9)">9</button>
+            <button class="btn" onclick="addDotToScreen('.')">.</button>
+            <button class="btn" onclick="setOperator('+')">+</button>
+            <button class="btn" onclick="setOperator('-')">-</button>
+            <button class="btn" onclick="setOperator('*')">*</button>
+            <button class="btn" onclick="setOperator('/')">/</button>
+            <button class="btn" onclick="calculate()">=</button>
+          </div>
+        </div>
       </div>
     </div>
     <script src="./calculator.js"></script>
