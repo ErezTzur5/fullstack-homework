@@ -1,7 +1,7 @@
 html,
 body {
   height: 100vh;
-  font-family: Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .flex-wrapper {
@@ -12,39 +12,30 @@ body {
 }
 
 .calculator {
-
-  width: 300px;
+  background-color: #A8A8A8;
+  width: 220px;
+  height: 275px;
   margin: 0 auto;
-  padding: 30px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: 2px solid black;
+  border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .screen {
   background-color: #DDFCFF;
-  width: 100%;
-  height: 40px;
-  margin-bottom: 10px;
-  padding: 5px;
+  width: 150px;
+  height: 25px;
   font-size: 18px;
   text-align: right;
-  border: 1px solid #0973f4;
-  border-radius: 5px;
-}
-
-.buttons {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  border: 2px solid #9B9B9B;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .btn {
-
-  padding: 20px;
   font-size: 20px;
   text-align: center;
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
   border-radius: 50%;
   background-color: #f1f1f1;
   cursor: pointer;
@@ -60,16 +51,80 @@ body {
   transform: translateY(1px);
 }
 
-.btn.ac {
+.top{
+  border: 1px solid  #EEEEEE;
+  border-radius: 8px;
+  height: 30px;
+  background-color: #EEEEEE;
+  display: flex;
+  padding: 0.25em;
+  margin: 0.5em;
+}
+
+.ec {
+  display: inline-block;
+  font-size: 15px;
+  border-bottom-left-radius: 6px;
+  border-top-left-radius: 6px;
+  height: 30px;
   background-color: #FEB191;
   border-color: #EC4802;
-  font-weight: bold;
   margin-bottom: 10px
 }
 
 .btn.num {
+  margin-left: 9px;
+  margin-bottom: 7px;
+  margin-top: 2px;
+  height: 35px;
+  width: 35px;
   background-color: #CBD6FE;
   color: #000000;
   border-color: #92959E;
   font-weight: bold;
+}
+
+
+.grid-items{
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+}
+
+.operations{
+  border: 1px solid  #EEEEEE;
+  border-radius: 8px;
+  background-color: #EEEEEE;
+  height: 173px;
+  margin-right: 5px;
+}
+
+.operations button{
+  border-color: #484848;
+  background-color: #02CA00;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-bottom: 7px;
+  margin-top: 2px;
+  height: 35px;
+  width: 35px;
+  font-weight: bold;
+}
+
+.main-numbers button:last-child{
+  background-color: #02CA00;
+  border-color: #484848;
+}
+.main-numbers{
+  border: 0.2px solid  #EEEEEE;
+  border-radius: 10%;
+  background-color: #EEEEEE;
+  width: 150px;
+  height: 173px;
+  margin-left: 10px;
+}
+
+p{
+  margin-left: 68px;
+  color: #4A4A4A;
+  font-size: 10px;
 }
