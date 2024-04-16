@@ -9,8 +9,15 @@
   <body>
     <h1>Welcome to cows and bulls</h1>
     <div class="row">? ? ? ?</div>
-    <div class="left"></div>
+    <div class="left">
+      <button class="bb" id="btn0" onclick="incrementValue('btn0')">0</button>
+      <button class="bb" id="btn1" onclick="incrementValue('btn1')">1</button>
+      <button class="bb" id="btn2" onclick="incrementValue('btn2')">2</button>
+      <button class="bb" id="btn3" onclick="incrementValue('btn3')">3</button>
+      <button class="" onclick="sendArray()">Guess</button>
+    </div>
     <div class="right">
+      <p class="won"></p>
       <div class="bull">Bulls</div>
       <div class="cow">Cows</div>
     </div>
