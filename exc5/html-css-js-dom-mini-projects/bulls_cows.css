@@ -1,0 +1,35 @@
+.row{
+    position: relative;
+    width: 360px;
+    height: 35px;
+    z-index: 2;
+    background-color: hsla(60, 100%, 92%, 1);
+    text-align: center;
+    border: 2px outset hsla(240, 10%, 90%, 0.2);
+    border-radius: 15px;
+}
+
+
+.right{
+    display: inline-block;
+    width: 160px;
+    text-align: center;
+    font: 18px Verdana;
+}
+
+.bull {
+    display: inline-block;
+    width: 50px;
+    color: darkgreen;
+    margin: 3px;
+    border: none;
+}
+
+
+.cow {
+    display: inline-block;
+    width: 50px;
+    color: blue;
+    margin: 3px;
+    border: none;
+}
