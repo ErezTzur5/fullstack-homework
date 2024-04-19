@@ -1,26 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bulls cows</title>
-    <link rel="stylesheet" href="./bulls_cows.css" />
-  </head>
-  <body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bulls cows</title>
+  <link rel="stylesheet" href="./bulls_cows.css" />
+</head>
+
+<body>
+  <form onsubmit="getName(); return false;">
+    <div class="nameHolder">
+      <label>
+        Enter your name to start a game:
+        <input type="text" id="nameInput" name="username" onkeydown="if(event.keyCode==13) getName();">
+      </label>
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+
+  <div class="container">
     <h1>Welcome to cows and bulls</h1>
-    <div class="row">? ? ? ?</div>
-    <div class="left">
-      <button class="bb" id="btn0" onclick="incrementValue('btn0')">0</button>
-      <button class="bb" id="btn1" onclick="incrementValue('btn1')">1</button>
-      <button class="bb" id="btn2" onclick="incrementValue('btn2')">2</button>
-      <button class="bb" id="btn3" onclick="incrementValue('btn3')">3</button>
-      <button class="" onclick="sendArray()">Guess</button>
+    <div class="row">
+      <span class="number">? ? ? ?</span>
+      <div>
+        <span class="bull">Bulls</span>
+        <span class="cow">Cows</span>
+      </div>
     </div>
-    <div class="right">
-      <p class="won"></p>
-      <div class="bull">Bulls</div>
-      <div class="cow">Cows</div>
+    <div class="result-row"></div>
+    <div class="inner-container">
+      <div class="left">
+        <button class="bb" id="btn0" onclick="incrementValue('btn0')">0</button>
+        <button class="bb" id="btn1" onclick="incrementValue('btn1')">1</button>
+        <button class="bb" id="btn2" onclick="incrementValue('btn2')">2</button>
+        <button class="bb" id="btn3" onclick="incrementValue('btn3')">3</button>
+        <button class="bb" onclick="sendArray()">Guess</button>
+        <button class="bb" onclick="newGame()">New Game</button>
+        <p class="won"></p>
+      </div>
     </div>
-    <script src="./bulls_cows.js"></script>
-  </body>
+  </div>
+
+  <script src="./bulls_cows.js"></script>
+</body>
+
 </html>

@@ -1,7 +1,22 @@
 
 let computerNumber = generateComputerNumber();
 let won = document.querySelector('.won');
+const wonNumbers = document.querySelector('span.number');
 let playerGuess;
+let guessCount = 0;
+let result;
+let player_name;
+
+
+function getName() {
+    player_name = document.getElementById("nameInput").value;
+    if (player_name.trim() !== "") {
+        document.querySelector(".container").style.display = "block";
+        document.querySelector(".nameHolder").style.display = "none";
+    } else {
+        alert("Please enter your name.");
+    }
+}
 
 function generateRandomNumber() {
     return Math.floor(Math.random() * 10);
@@ -31,6 +46,11 @@ function checkGuess(computerNumber, playerGuess) {
             cows++;
         }
     }
+    if (bulls === 4) {
+        won.innerText = (`${player_name} Won!`)
+        wonNumbers.textContent = computerNumber.join(' ')
+
+    }
 
     return { bulls, cows }; // checking for bulls or cows
 }
@@ -49,23 +69,72 @@ function incrementValue(btnId) {
 
 function sendArray() {
     playerGuess = [];
+    won.innerText = ""
+    guessCount++;
     for (let index = 0; playerGuess.length < 4; index++) {
         let buttons = document.getElementById(`btn${index}`)
-        
+
         let value = parseInt(buttons.innerText);
 
-        if (!playerGuess.includes(value)){
+        if (!playerGuess.includes(value)) {
             playerGuess.push(value)
-        }
-        else{won.innerText = "Duplicate!"}
-    }    
 
-    console.log('playerGuess:',playerGuess);
-    let result = checkGuess(computerNumber, playerGuess);
-    console.log(`Bulls: ${result.bulls}, Cows: ${result.cows}`);
-    if (result.bulls === 4){
-        won.innerText = "You WON!"
+
+
+        }
+        else { won.innerText = "Duplicate!" }
+
     }
 
+    result = checkGuess(computerNumber, playerGuess);
+    console.log('Player Guess: ', playerGuess);
+    console.log('Player Guess count: ', guessCount);
+    addGuessRow(playerGuess)
+}
+
+function addGuessRow(guess) {
+    const container = document.querySelector('.result-row');
+    const newRow = document.createElement('div');
+    newRow.classList.add('row');
+
+    const newNumber = document.createElement('span');
+    newNumber.classList.add('number');
+    newNumber.textContent = `${guess.join(' ')}`;
+    newNumber.style.marginLeft = '0px';
+    newRow.appendChild(newNumber);
+
+    const newDiv = document.createElement('div');
+    newRow.appendChild(newDiv)
+
+    const newBull = document.createElement('span');
+    newBull.classList.add('bull');
+    newBull.textContent = `${result.bulls}`;
+    newBull.style.marginRight = '0px'
+
+    newDiv.appendChild(newBull);
+
+    const newCow = document.createElement('span');
+    newCow.classList.add('cow');
+    newCow.textContent = `${result.cows}`;
+    newCow.style.marginRight = '90px';
+
+
+    newDiv.appendChild(newCow);
+
+    container.appendChild(newRow);
+}
+
+function newGame() {
+    computerNumber = generateComputerNumber();
+    guessCount = 0;
+    result = null;
+    playerGuess = null;
+    won.innerText = "";
+    clearGuessRows();
+}
+
+function clearGuessRows() {
+    const container = document.querySelector('.result-row');
+    container.innerHTML = '';
 }
 
