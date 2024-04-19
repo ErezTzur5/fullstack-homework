@@ -12,10 +12,11 @@
   <form onsubmit="getName(); return false;">
     <div class="nameHolder">
       <label>
-        Enter your name to start a game:
-        <input type="text" id="nameInput" name="username" onkeydown="if(event.keyCode==13) getName();">
+        <input placeholder="Please enter your name" class="form-field" type="text" id="nameInput" name="username"
+          onkeydown="if(event.keyCode==13) getName();">
+        <!-- key code 13 is enter in keyboard, added an option to press enter without moving mouse -->
       </label>
-      <button type="submit">Submit</button>
+      <button type="submit" ; class="user-submit">Submit</button>
     </div>
   </form>
 
@@ -30,16 +31,30 @@
     </div>
     <div class="result-row"></div>
     <div class="inner-container">
-      <div class="left">
-        <button class="bb" id="btn0" onclick="incrementValue('btn0')">0</button>
-        <button class="bb" id="btn1" onclick="incrementValue('btn1')">1</button>
-        <button class="bb" id="btn2" onclick="incrementValue('btn2')">2</button>
-        <button class="bb" id="btn3" onclick="incrementValue('btn3')">3</button>
-        <button class="bb" onclick="sendArray()">Guess</button>
-        <button class="bb" onclick="newGame()">New Game</button>
-        <p class="won"></p>
+      <div class="">
+        <button class="buttons" id="btn0" onclick="incrementValue('btn0')">0</button>
+        <button class="buttons" id="btn1" onclick="incrementValue('btn1')">1</button>
+        <button class="buttons" id="btn2" onclick="incrementValue('btn2')">2</button>
+        <button class="buttons" id="btn3" onclick="incrementValue('btn3')">3</button>
+        <button class="buttons" onclick="sendArray()">Guess</button>
+        <button class="buttons" onclick="newGame()">New game</button>
+        <button id="score" class="buttons" onclick="">Score</button>
       </div>
     </div>
+    <div class="numbers-div">
+      <button class="buttons" id="" onclick="">0</button>
+      <button class="buttons" id="" onclick="">1</button>
+      <button class="buttons" id="" onclick="">2</button>
+      <button class="buttons" id="" onclick="">3</button>
+      <button class="buttons" id="" onclick="">4</button>
+      <button class="buttons" id="" onclick="">5</button>
+      <button class="buttons" id="" onclick="">6</button>
+      <button class="buttons" id="" onclick="">7</button>
+      <button class="buttons" id="" onclick="">8</button>
+      <button class="buttons" id="" onclick="">9</button>
+    </div>
+    <span class="won"></span>
+    <div class="score"></div>
   </div>
 
   <script src="./bulls_cows.js"></script>

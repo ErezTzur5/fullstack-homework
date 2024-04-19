@@ -8,6 +8,23 @@ let result;
 let player_name;
 
 
+
+function score() {
+    document.querySelector(".score").style.display = "block";
+
+    const container = document.querySelector('.score');
+
+    const newRowScore = document.createElement('div');
+
+    newRowScore.classList.add('row-score');
+
+    const newSpan = document.createElement('span');
+    newSpan.textContent = `Name: ${player_name} Guess count: ${guessCount} Winning numbers: ${playerGuess.join(' ')}`
+    newRowScore.appendChild(newSpan);
+    container.appendChild(newRowScore);
+
+}
+
 function getName() {
     player_name = document.getElementById("nameInput").value;
     if (player_name.trim() !== "") {
@@ -47,6 +64,7 @@ function checkGuess(computerNumber, playerGuess) {
         }
     }
     if (bulls === 4) {
+        document.querySelector("#score").style.display = "inline";
         won.innerText = (`${player_name} Won!`)
         wonNumbers.textContent = computerNumber.join(' ')
 
@@ -100,7 +118,7 @@ function addGuessRow(guess) {
     const newNumber = document.createElement('span');
     newNumber.classList.add('number');
     newNumber.textContent = `${guess.join(' ')}`;
-    newNumber.style.marginLeft = '0px';
+    newNumber.style.cssText = 'padding-right: 1rem;';
     newRow.appendChild(newNumber);
 
     const newDiv = document.createElement('div');
@@ -109,14 +127,14 @@ function addGuessRow(guess) {
     const newBull = document.createElement('span');
     newBull.classList.add('bull');
     newBull.textContent = `${result.bulls}`;
-    newBull.style.marginRight = '0px'
+    newBull.style.cssText = 'padding-right: 5.5rem;';
 
     newDiv.appendChild(newBull);
 
     const newCow = document.createElement('span');
     newCow.classList.add('cow');
     newCow.textContent = `${result.cows}`;
-    newCow.style.marginRight = '90px';
+    newCow.style.cssText = 'padding-right: 1.5rem;';
 
 
     newDiv.appendChild(newCow);
@@ -130,6 +148,9 @@ function newGame() {
     result = null;
     playerGuess = null;
     won.innerText = "";
+    wonNumbers.textContent = '? ? ? ?'
+    document.querySelector("#score").style.display = "none";
+
     clearGuessRows();
 }
 
