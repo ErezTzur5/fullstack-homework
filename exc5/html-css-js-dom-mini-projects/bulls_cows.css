@@ -7,7 +7,6 @@ body {
     height: 100vh;
     margin: 0;
     background-color: #ebd6d6;
-    /* Set background color */
 }
 
 h1 {
@@ -146,10 +145,45 @@ input[type="button"]:hover {
     text-align: center;
 }
 
-#score {
+.score {
     display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid black;
+    padding: 10px;
+    background-color: white;
+    z-index: 9999;
+}
+
+.close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
 }
 
 .numbers-div {
     padding-top: 2rem;
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 2px solid black;
+}
+
+td,
+th {
+    border: 1px solid black;
+    text-align: center;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+    /* Gray background color for headers */
+    font-size: medium;
 }

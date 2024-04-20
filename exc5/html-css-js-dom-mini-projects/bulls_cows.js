@@ -4,25 +4,33 @@ let won = document.querySelector('.won');
 const wonNumbers = document.querySelector('span.number');
 let playerGuess;
 let guessCount = 0;
+let bulls = 0;
 let result;
 let player_name;
+let scoreVisible = false;
 
 
 
-function score() {
-    document.querySelector(".score").style.display = "block";
+function toggleScoreTable() {
+    const scoreTable = document.getElementById('scoreTable');
+    scoreVisible = !scoreVisible; // toggle visibility
 
-    const container = document.querySelector('.score');
+    if (scoreVisible && bulls === 4) {
+        scoreTable.style.display = "block";
+        updateScoreTable(player_name, guessCount, playerGuess);
+    } else {
+        scoreTable.style.display = "none";
+    }
+}
 
-    const newRowScore = document.createElement('div');
+function updateScoreTable() {
+    const scoreBody = document.getElementById('scoreBody');
+    scoreBody.innerHTML = ""; // clear existing rows
 
-    newRowScore.classList.add('row-score');
-
-    const newSpan = document.createElement('span');
-    newSpan.textContent = `Name: ${player_name} Guess count: ${guessCount} Winning numbers: ${playerGuess.join(' ')}`
-    newRowScore.appendChild(newSpan);
-    container.appendChild(newRowScore);
-
+    const capitalizedPlayerName = player_name.charAt(0).toUpperCase() + player_name.slice(1);
+    const newRow = document.createElement('tr');
+    newRow.innerHTML = `<td>${capitalizedPlayerName}</td><td>${guessCount}</td><td>${playerGuess.join(' ')}</td>`;
+    scoreBody.appendChild(newRow);
 }
 
 function getName() {
@@ -53,7 +61,7 @@ function generateComputerNumber() {
 }
 
 function checkGuess(computerNumber, playerGuess) {
-    let bulls = 0;
+    bulls = 0;
     let cows = 0;
 
     for (let i = 0; i < 4; i++) {
@@ -64,7 +72,7 @@ function checkGuess(computerNumber, playerGuess) {
         }
     }
     if (bulls === 4) {
-        document.querySelector("#score").style.display = "inline";
+
         won.innerText = (`${player_name} Won!`)
         wonNumbers.textContent = computerNumber.join(' ')
 
@@ -149,8 +157,6 @@ function newGame() {
     playerGuess = null;
     won.innerText = "";
     wonNumbers.textContent = '? ? ? ?'
-    document.querySelector("#score").style.display = "none";
-
     clearGuessRows();
 }
 

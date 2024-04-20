@@ -38,20 +38,21 @@
         <button class="buttons" id="btn3" onclick="incrementValue('btn3')">3</button>
         <button class="buttons" onclick="sendArray()">Guess</button>
         <button class="buttons" onclick="newGame()">New game</button>
-        <button id="score" class="buttons" onclick="">Score</button>
+        <button id="score" class="buttons" onclick="toggleScoreTable()">Score</button>
+        <div class="score" id="scoreTable">
+          <span class="close" onclick="toggleScoreTable()">&times;</span>
+          <table id="scoreTable">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Guess Count</th>
+                <th>Winning Numbers</th>
+              </tr>
+            </thead>
+            <tbody id="scoreBody"></tbody>
+          </table>
+        </div>
       </div>
-    </div>
-    <div class="numbers-div">
-      <button class="buttons" id="" onclick="">0</button>
-      <button class="buttons" id="" onclick="">1</button>
-      <button class="buttons" id="" onclick="">2</button>
-      <button class="buttons" id="" onclick="">3</button>
-      <button class="buttons" id="" onclick="">4</button>
-      <button class="buttons" id="" onclick="">5</button>
-      <button class="buttons" id="" onclick="">6</button>
-      <button class="buttons" id="" onclick="">7</button>
-      <button class="buttons" id="" onclick="">8</button>
-      <button class="buttons" id="" onclick="">9</button>
     </div>
     <span class="won"></span>
     <div class="score"></div>
