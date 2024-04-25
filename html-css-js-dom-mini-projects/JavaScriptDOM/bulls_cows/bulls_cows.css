@@ -231,3 +231,16 @@ input[type="text"]:focus {
 .user-submit-area {
     display: flex;
 }
+
+#durationDisplay {
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    color: #333;
+    background-color: #f0f0f0;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+#durationDisplay span {
+    padding: 0 5px;
+}
