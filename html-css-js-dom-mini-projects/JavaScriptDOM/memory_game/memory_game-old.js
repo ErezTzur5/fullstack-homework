@@ -39,21 +39,9 @@ function createCards(cardsArray, rows, columns) {
     const grid = document.querySelector('.grid');
     grid.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
     grid.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
+    cardsArray.sort(() => Math.random() - 0.5);
 
-    // Calculate the total number of cards needed to fill the grid
-    const totalCardsNeeded = rows * columns;
-
-    // Duplicate the cardsArray to ensure we have enough cards
-    let duplicatedCardsArray = cardsArray.slice();
-    while (duplicatedCardsArray.length < totalCardsNeeded) {
-        duplicatedCardsArray = duplicatedCardsArray.concat(cardsArray.slice());
-    }
-
-    // Shuffle the duplicated cardsArray
-    duplicatedCardsArray.sort(() => Math.random() - 0.5);
-
-    // Create card elements and append them to the grid
-    duplicatedCardsArray.slice(0, totalCardsNeeded).forEach((card, index) => {
+    cardsArray.forEach((card, index) => {
         const cardWrapper = document.createElement('div');
         cardWrapper.classList.add('card-wrapper');
         const cardElement = document.createElement('div');
@@ -71,7 +59,6 @@ function createCards(cardsArray, rows, columns) {
         });
     });
 }
-
 
 function canFlip(cardWrapper) {
     const flippedCount = document.querySelectorAll('.card[data-flipped="true"]').length;
@@ -95,8 +82,42 @@ function setupGame(rows, columns) {
 
     createCards(cards, rows, columns);
 
+    let firstCard = null;
+    let secondCard = null;
+    let pairsFound = 0;
+
+    const grid = document.querySelector('.grid');
+    let canFlip = true;
+
+    grid.addEventListener('click', function (event) {
+        const clickedCard = event.target.closest('.card');
+        if (!clickedCard || !canFlip) return;
+
+        if (!clickedCard.classList.contains('flipped')) {
+            flipCard(clickedCard);
+        }
+
+        const flippedCards = document.querySelectorAll('.card.flipped');
+        if (flippedCards.length === 2) {
+            canFlip = false; // Prevent flipping more cards
+            setTimeout(() => {
+                const [firstFlippedCard, secondFlippedCard] = flippedCards;
+                if (firstFlippedCard.innerText === secondFlippedCard.innerText) {
+                    firstFlippedCard.dataset.flipped = 'matched';
+                    secondFlippedCard.dataset.flipped = 'matched';
+                    pairsFound++;
+                    console.log(`Pairs found: ${pairsFound}`);
+                } else {
+                    flipCard(firstFlippedCard);
+                    flipCard(secondFlippedCard);
+                }
+                canFlip = true; // Allow flipping more cards after a short delay
+            }, 1000);
+        } else if (flippedCards.length === 0) {
+            canFlip = true; // Reset canFlip if no cards are flipped
+        }
+    });
 }
 
 // Example usage:
 setupGame(4, 3); // 4x3 grid
-// setupGame(6, 6); // 6x6 grid

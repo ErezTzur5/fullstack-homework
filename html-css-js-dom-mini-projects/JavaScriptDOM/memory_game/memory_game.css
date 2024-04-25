@@ -5,7 +5,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #f0f0f0;
+    background-color: #032907;
 }
 
 .memory-game {
@@ -83,4 +83,81 @@ body {
 
 .hidden {
     display: none;
+}
+
+.memory-game {
+    display: none;
+}
+
+.nameHolder {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+.game-rules {
+    width: 50%;
+    line-height: 1.5;
+    background-color: #350505;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    font-family: Arial, sans-serif;
+    color: #333;
+
+}
+
+.game-rules h1 {
+    color: white;
+
+}
+
+.game-rules p {
+    color: white;
+
+}
+
+input[type="text"] {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 1.5;
+    resize: vertical;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.user-submit-area {
+    display: flex;
+}
+
+
+.user-submit-button {
+    margin-left: 10px;
+    font-family: monospace;
+    background-color: #f3f7fe;
+    color: #3b82f6;
+    border: none;
+    border-radius: 8px;
+    width: 100px;
+    height: 40px;
+    transition: .3s;
+}
+
+.user-submit-button:hover {
+    background-color: #3b82f6;
+    box-shadow: 0 0 0 5px #3b83f65f;
+    color: #67a86d;
+
 }
