@@ -8,6 +8,29 @@ let bulls = 0;
 let result;
 let player_name;
 let scoreVisible = false;
+let startTime = 0;
+let endTime = 0;
+let durationInSeconds = 0;
+let timerInterval;
+
+function startTimer() {
+    startTime = performance.now();
+    timerInterval = setInterval(updateTimerDisplay, 1000); // Update every second
+}
+
+function stopTimer() {
+    clearInterval(timerInterval); // Stop the interval
+}
+
+function updateTimerDisplay() {
+    const currentTime = performance.now();
+    const elapsedSeconds = Math.floor((currentTime - startTime) / 1000);
+    displayTimer(elapsedSeconds);
+}
+
+function displayTimer(durationInSeconds) {
+    document.getElementById("durationDisplay").textContent = `Time: ${durationInSeconds}`;
+}
 
 
 
@@ -29,7 +52,7 @@ function updateScoreTable() {
 
     const capitalizedPlayerName = player_name.charAt(0).toUpperCase() + player_name.slice(1);
     const newRow = document.createElement('tr');
-    newRow.innerHTML = `<td>${capitalizedPlayerName}</td><td>${guessCount}</td><td>${playerGuess.join(' ')}</td>`;
+    newRow.innerHTML = `<td>${capitalizedPlayerName}</td><td>${guessCount}</td><td>${playerGuess.join(' ')}</td><td>${durationInSeconds}</td>`;
     scoreBody.appendChild(newRow);
 }
 
@@ -41,6 +64,9 @@ function getName() {
     } else {
         alert("Please enter your name.");
     }
+    // startTime = performance.now();
+    startTimer();
+
 }
 
 function generateRandomNumber() {
@@ -60,6 +86,17 @@ function generateComputerNumber() {
     return number; // creating array with 4 random numbers
 }
 
+function formatSeconds(seconds) {
+    if (seconds >= 60) {
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = seconds % 60;
+        return `${minutes} minutes ${remainingSeconds.toFixed(1)} seconds`;
+    } else {
+        return `${seconds.toFixed(1)} seconds`;
+    }
+
+}
+
 function checkGuess(computerNumber, playerGuess) {
     bulls = 0;
     let cows = 0;
@@ -75,9 +112,13 @@ function checkGuess(computerNumber, playerGuess) {
 
         won.innerText = (`${player_name} Won!`)
         wonNumbers.textContent = computerNumber.join(' ')
+        // endTime = performance.now();
+        // duration = (endTime - startTime) / 1000;
+        // durationInSeconds = formatSeconds(duration)
+        stopTimer();
+        console.log(`Round duration: ${durationInSeconds} seconds`);
 
     }
-
     return { bulls, cows }; // checking for bulls or cows
 }
 
@@ -151,6 +192,14 @@ function addGuessRow(guess) {
 }
 
 function newGame() {
+    // Reset player name and display state
+    player_name = "";
+    document.querySelector(".container").style.display = "none";
+    document.querySelector(".nameHolder").style.display = "block";
+    durationInSeconds = 0;
+
+
+    // Reset game state
     computerNumber = generateComputerNumber();
     guessCount = 0;
     result = null;
@@ -158,6 +207,7 @@ function newGame() {
     won.innerText = "";
     wonNumbers.textContent = '? ? ? ?'
     clearGuessRows();
+
 }
 
 function clearGuessRows() {

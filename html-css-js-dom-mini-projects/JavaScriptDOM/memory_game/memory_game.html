@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory Game</title>
+    <link rel="stylesheet" href="./memory_game.css" />
+  </head>
+
+  <body>
+    <form onsubmit="getName(); return false;">
+      <div class="nameHolder">
+        <div class="game-rules">
+          <h1>Welcome to memory game!</h1>
+          <p>memory game</p>
+          <p>memory game</p>
+          <p>memory game</p>
+        </div>
+
+        <label class="user-submit-area">
+          <input
+            placeholder="Please enter your name"
+            class="form-field"
+            type="text"
+            id="nameInput"
+            name="username"
+            onkeydown="if(event.keyCode==13) getName();"
+          />
+          <button type="submit" ; class="user-submit-button">Submit</button>
+        </label>
+      </div>
+    </form>
+    <div class="memory-game">
+      <div class="grid"></div>
+    </div>
+    <script src="./memory_game.js"></script>
+  </body>
+</html>

@@ -86,18 +86,19 @@ input[type="button"]:hover {
     color: red;
 }
 
-.user-submit {
+.user-submit-button {
+    margin-left: 10px;
     font-family: monospace;
     background-color: #f3f7fe;
     color: #3b82f6;
     border: none;
     border-radius: 8px;
     width: 100px;
-    height: 45px;
+    height: 40px;
     transition: .3s;
 }
 
-.user-submit:hover {
+.user-submit-button:hover {
     background-color: #3b82f6;
     box-shadow: 0 0 0 5px #3b83f65f;
     color: #fff;
@@ -186,4 +187,60 @@ th {
     background-color: #f2f2f2;
     /* Gray background color for headers */
     font-size: medium;
+}
+
+.nameHolder {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+.game-rules {
+    width: 50%;
+    line-height: 1.5;
+    background-color: #f7f7f7;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    font-family: Arial, sans-serif;
+    color: #333;
+
+}
+
+input[type="text"] {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 1.5;
+    resize: vertical;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.user-submit-area {
+    display: flex;
+}
+
+#durationDisplay {
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    color: #333;
+    background-color: #f0f0f0;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+#durationDisplay span {
+    padding: 0 5px;
 }

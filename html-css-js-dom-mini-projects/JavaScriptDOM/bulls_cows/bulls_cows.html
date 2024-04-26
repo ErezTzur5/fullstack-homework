@@ -11,16 +11,36 @@
 <body>
   <form onsubmit="getName(); return false;">
     <div class="nameHolder">
-      <label>
+      <div class="game-rules">
+        <h1>Welcome to Bulls and Cows game!</h1>
+        <p>
+          Bulls and Cows is a classic code-breaking game where you try to guess a secret code.
+          In this game, the computer will generate a random 4-digit number, and your goal is to guess the number in as
+          few
+          attempts as possible.
+        </p>
+        <p>
+          <span style="color: green;">A bull</span> bull means you have guessed a digit correctly and it is in the right
+          position.<br>
+          <span style="color: blue;">A cow</span> means you have guessed a digit correctly, but it is in the wrong
+          position.
+        </p>
+        <p>
+          Good luck and have fun playing!
+        </p>
+      </div>
+
+      <label class="user-submit-area">
         <input placeholder="Please enter your name" class="form-field" type="text" id="nameInput" name="username"
           onkeydown="if(event.keyCode==13) getName();">
-        <!-- key code 13 is enter in keyboard, added an option to press enter without moving mouse -->
+        <button type="submit" ; class="user-submit-button">Submit</button>
       </label>
-      <button type="submit" ; class="user-submit">Submit</button>
+
     </div>
   </form>
 
   <div class="container">
+    <span id="durationDisplay"></span>
     <h1>Welcome to cows and bulls</h1>
     <div class="row">
       <span class="number">? ? ? ?</span>
@@ -47,6 +67,7 @@
                 <th>Name</th>
                 <th>Guess Count</th>
                 <th>Winning Numbers</th>
+                <th>Time</th>
               </tr>
             </thead>
             <tbody id="scoreBody"></tbody>

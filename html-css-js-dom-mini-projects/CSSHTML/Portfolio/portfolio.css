@@ -294,8 +294,130 @@ footer .container {
     color: white;
 }
 
+@media (max-width: 1025px) {
+    nav ul li a {
+        padding: 0 80px;
+    }
 
+<<<<<<< HEAD
 @media (width <=900px) {
+=======
+    .contact {
+        padding: 20px 10px 450px 20px;
+    }
+
+    .message button {
+        margin-top: 20px;
+        margin-left: 0px;
+    }
+
+}
+
+@media (max-width: 913px) {
+    nav ul li a {
+        padding: 0 70px;
+    }
+
+    .aboutme-image {
+        height: 350px;
+        width: 700px;
+    }
+
+    .aboutme-text {
+        width: 100%;
+        margin-left: 10px;
+
+    }
+}
+
+
+@media (max-width: 820px) {
+
+    nav ul li a {
+        padding: 0 50px;
+    }
+
+    .aboutme-image {
+        height: 350px;
+        width: 600px;
+    }
+
+    .aboutme-text {
+        width: 100%;
+        margin-left: 10px;
+
+    }
+
+    .contact {
+        padding: 10px 30px 50px 30px;
+    }
+
+    .message button {
+        width: 140px;
+        height: 40px;
+        margin-top: 20px;
+        margin-left: 0px;
+    }
+
+    .message textarea {
+        width: 80%;
+        height: 20vh;
+        border-radius: 5px;
+        border: 0px;
+    }
+
+    .contact-form {
+        margin-bottom: 200px;
+
+    }
+
+}
+
+
+
+@media (max-width: 769px) {
+    nav ul li a {
+        padding: 0 50px;
+    }
+
+    .aboutme-image {
+        height: 350px;
+        width: 600px;
+    }
+
+    .aboutme-text {
+        width: 100%;
+        margin-left: 10px;
+
+    }
+
+    .contact {
+        padding: 10px 30px 50px 30px;
+    }
+
+    .message button {
+        width: 140px;
+        height: 40px;
+        margin-top: 20px;
+        margin-left: 0px;
+    }
+
+    .message textarea {
+        width: 80%;
+        height: 20vh;
+        border-radius: 5px;
+        border: 0px;
+    }
+
+    .contact-form {
+        margin-bottom: 50px;
+
+    }
+
+}
+
+@media (max-width: 700px) {
+>>>>>>> b7b07ebd6f7353383062604bed1407220c0a58db
 
     .hero img {
         max-width: 350px;
@@ -343,5 +465,141 @@ footer .container {
         border: 0px;
     }
 
-    
+
+
+    .message label {
+        margin-left: 6rem;
+    }
+
+}
+
+@media (max-width: 541px) {
+    .message button {
+        margin-left: 115px;
+    }
+
+    nav ul {
+        gap: 20px;
+    }
+
+    .aboutme-image {
+        height: 350px;
+        width: 400px;
+    }
+}
+
+@media (max-width: 431px) {
+    nav ul li a {
+        padding: 0 0px;
+    }
+
+    .aboutme-image {
+        height: 325px;
+        width: 300px;
+    }
+
+    .message label {
+        margin-left: 5rem;
+    }
+
+    .message button {
+        margin-left: 4rem;
+    }
+}
+
+@media (max-width: 415px) {
+    .message button {
+        margin-left: 115px;
+    }
+
+    nav ul li a {
+        padding: 0 0px;
+        font-size: 15px;
+    }
+
+    .aboutme-image {
+        height: 350px;
+        width: 300px;
+    }
+
+    .message button {
+        margin-left: 3.5rem;
+    }
+
+    .message textarea {
+        width: 140%;
+        border-radius: 5px;
+        border: 0px;
+    }
+
+}
+
+@media (max-width: 391px) {
+    nav ul {
+        padding: 0 0;
+    }
+
+    .message button {
+        margin-left: 3rem;
+    }
+
+    .message textarea {
+        width: 139%;
+        border-radius: 5px;
+        border: 0px;
+    }
+
+    .message label {
+        margin-left: 4.5rem;
+    }
+}
+
+@media (max-width: 376px) {
+    .aboutme-image {
+        height: 300px;
+        width: 250px;
+    }
+
+    nav ul {
+        padding: 0 0;
+    }
+
+    .message button {
+        margin-left: 2.5rem;
+    }
+
+    .message label {
+        margin-left: 5rem;
+    }
+
+    .message textarea {
+        width: 136%;
+        border-radius: 5px;
+        border: 0px;
+    }
+}
+
+@media (max-width: 361px) {
+    .aboutme-image {
+        height: 300px;
+        width: 250px;
+    }
+
+    nav ul {
+        padding: 0 0;
+    }
+
+    .message button {
+        margin-left: 2rem;
+    }
+
+    .message label {
+        margin-left: 4.5rem;
+    }
+
+    .message textarea {
+        width: 136%;
+        border-radius: 5px;
+        border: 0px;
+    }
 }
