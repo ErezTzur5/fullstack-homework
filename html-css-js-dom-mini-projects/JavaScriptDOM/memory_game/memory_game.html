@@ -1,38 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Memory Game</title>
-    <link rel="stylesheet" href="./memory_game.css" />
-  </head>
 
-  <body>
-    <form onsubmit="getName(); return false;">
-      <div class="nameHolder">
-        <div class="game-rules">
-          <h1>Welcome to memory game!</h1>
-          <p>memory game</p>
-          <p>memory game</p>
-          <p>memory game</p>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Memory Game</title>
+  <link rel="stylesheet" href="./memory_game.css" />
+</head>
 
-        <label class="user-submit-area">
-          <input
-            placeholder="Please enter your name"
-            class="form-field"
-            type="text"
-            id="nameInput"
-            name="username"
-            onkeydown="if(event.keyCode==13) getName();"
-          />
-          <button type="submit" ; class="user-submit-button">Submit</button>
-        </label>
+<body>
+  <form onsubmit="getName(); return false;">
+    <div class="nameHolder">
+      <div class="game-rules">
+        <h1>Welcome to memory game!</h1>
+        <p>On each turn, a player flips over two cards.</p>
+        <p>If the two cards match, the player keeps the pair and gets another turn.</p>
+        <p>If the two cards do not match, they are flipped back face down, and it becomes the next player's turn.</p>
       </div>
-    </form>
-    <div class="memory-game">
-      <div class="grid"></div>
+
+      <label class="user-submit-area">
+        <input placeholder="Please enter your name" class="form-field" type="text" id="nameInput" name="username"
+          onkeydown="if(event.keyCode==13) getName();" />
+        <button type="submit" ; class="user-submit-button">Submit</button>
+      </label>
     </div>
-    <script src="./memory_game.js"></script>
-  </body>
+  </form>
+
+  <form onsubmit="getSize(); return false;">
+    <div class="grid-size">
+      <h1 style="color: white;">Please Choose grid size:</h1>
+      <button class="board-size-btn" data-rows="4" data-cols="3">4x3</button>
+      <button class="board-size-btn" data-rows="4" data-cols="4">4x4</button>
+      <button class="board-size-btn" data-rows="5" data-cols="4">5x4</button>
+      <button class="board-size-btn" data-rows="6" data-cols="5">6x5</button>
+
+
+    </div>
+  </form>
+
+  <div class="memory-game">
+    <span id="durationDisplay"></span>
+
+    <div class="grid">
+
+      <div class="score" id="scoreTable">
+
+        <table id="scoreTable">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody id="scoreBody"></tbody>
+        </table>
+      </div>
+    </div>
+    <span class="won"></span>
+    <button style="margin-top: 10px; margin-left: 45px;border: 2px solid #333;" class="user-submit-button"
+      onclick="startNewGame()">New
+      game</button>
+    <button style="margin-top: 10px;margin-left: 45px;border: 2px solid #333;" id="score" class="user-submit-button"
+      onclick="toggleScoreTable()">Score</button>
+    <span class="close" onclick="toggleScoreTable()">&times;</span>
+  </div>
+
+  <script src="./memory_game.js"></script>
+</body>
+
 </html>

@@ -37,10 +37,10 @@ function displayTimer(durationInSeconds) {
 function toggleScoreTable() {
     const scoreTable = document.getElementById('scoreTable');
     scoreVisible = !scoreVisible; // toggle visibility
-
+    timeStamp = document.getElementById("durationDisplay").textContent
     if (scoreVisible && bulls === 4) {
         scoreTable.style.display = "block";
-        updateScoreTable(player_name, guessCount, playerGuess);
+        updateScoreTable(player_name, guessCount, playerGuess, timeStamp);
     } else {
         scoreTable.style.display = "none";
     }
@@ -52,7 +52,7 @@ function updateScoreTable() {
 
     const capitalizedPlayerName = player_name.charAt(0).toUpperCase() + player_name.slice(1);
     const newRow = document.createElement('tr');
-    newRow.innerHTML = `<td>${capitalizedPlayerName}</td><td>${guessCount}</td><td>${playerGuess.join(' ')}</td><td>${durationInSeconds}</td>`;
+    newRow.innerHTML = `<td>${capitalizedPlayerName}</td><td>${guessCount}</td><td>${playerGuess.join(' ')}</td><td>${timeStamp}</td>`;
     scoreBody.appendChild(newRow);
 }
 
@@ -145,8 +145,6 @@ function sendArray() {
 
         if (!playerGuess.includes(value)) {
             playerGuess.push(value)
-
-
 
         }
         else { won.innerText = "Duplicate!" }

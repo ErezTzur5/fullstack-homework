@@ -10,7 +10,6 @@ body {
 
 .memory-game {
     width: fit-content;
-    /* max-width: 100%; */
     height: fit-content;
     max-height: 100%;
     background-color: #fff;
@@ -21,6 +20,8 @@ body {
     grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
     grid-gap: 10px;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .grid {
@@ -151,7 +152,7 @@ input[type="text"]:focus {
     border: none;
     border-radius: 8px;
     width: 100px;
-    height: 40px;
+    height: 50px;
     transition: .3s;
 }
 
@@ -160,4 +161,142 @@ input[type="text"]:focus {
     box-shadow: 0 0 0 5px #3b83f65f;
     color: #67a86d;
 
+}
+
+
+.grid-size {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+
+.board-size-btn,
+.board-size-btn *,
+.board-size-btn :after,
+.board-size-btn :before,
+.board-size-btn:after,
+.board-size-btn:before {
+    border: 0 solid;
+    box-sizing: border-box;
+}
+
+.board-size-btn {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: button;
+    background-color: #000;
+    background-image: none;
+    color: #fff;
+    cursor: pointer;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+        Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    font-size: 100%;
+    line-height: 1.5;
+    margin: 0;
+    -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
+    padding: 0;
+}
+
+.board-size-btn:disabled {
+    cursor: default;
+}
+
+.board-size-btn:-moz-focusring {
+    outline: auto;
+}
+
+.board-size-btn svg {
+    display: block;
+    vertical-align: middle;
+}
+
+.board-size-btn [hidden] {
+    display: none;
+}
+
+.board-size-btn {
+    border: 2px solid #fff;
+    border-radius: 999px;
+    box-sizing: border-box;
+    display: block;
+    font-weight: 900;
+    overflow: hidden;
+    padding: 1.1rem 3rem;
+    position: relative;
+    text-transform: uppercase;
+    margin-top: 10px;
+    width: 80%;
+}
+
+.board-size-btn span {
+    mix-blend-mode: difference;
+}
+
+.board-size-btn:before {
+    background: #fff;
+    border-radius: 999px;
+    inset: 0;
+    position: absolute;
+    transition: transform 0.2s;
+}
+
+.board-size-btn:hover:before {
+    transform: scale(0.7);
+}
+
+#durationDisplay {
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    color: #333;
+    background-color: #f0f0f0;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+#durationDisplay span {
+    padding: 0 5px;
+}
+
+.score {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid black;
+    padding: 10px;
+    background-color: white;
+    z-index: 9999;
+}
+
+.close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 2px solid black;
+}
+
+td,
+th {
+    border: 1px solid black;
+    text-align: center;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+    /* Gray background color for headers */
+    font-size: medium;
 }
