@@ -190,21 +190,7 @@ function addGuessRow(guess) {
 }
 
 function newGame() {
-    // Reset player name and display state
-    player_name = "";
-    document.querySelector(".container").style.display = "none";
-    document.querySelector(".nameHolder").style.display = "block";
-    durationInSeconds = 0;
-
-
-    // Reset game state
-    computerNumber = generateComputerNumber();
-    guessCount = 0;
-    result = null;
-    playerGuess = null;
-    won.innerText = "";
-    wonNumbers.textContent = '? ? ? ?'
-    clearGuessRows();
+    location.reload();
 
 }
 
