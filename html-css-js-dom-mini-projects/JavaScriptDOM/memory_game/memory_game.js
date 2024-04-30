@@ -20,11 +20,11 @@ const cards = [
 
 function startTimer() {
     startTime = performance.now();
-    timerInterval = setInterval(updateTimerDisplay, 1000); // Update every second
+    timerInterval = setInterval(updateTimerDisplay, 1000); // update every second
 }
 
 function stopTimer() {
-    clearInterval(timerInterval); // Stop the interval
+    clearInterval(timerInterval); // stop the interval
 }
 
 function updateTimerDisplay() {
@@ -44,7 +44,6 @@ function getName() {
     player_name = document.getElementById("nameInput").value;
     // get player name and shows the game ui
     if (player_name.trim() !== "") {
-        // document.querySelector(".memory-game").style.display = "block";
         document.querySelector(".grid-size").style.display = "flex";
         document.querySelector(".nameHolder").style.display = "none";
     } else {
