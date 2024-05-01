@@ -408,11 +408,11 @@ footer .container {
     }
 
     .message label {
-        margin-left: 5rem;
+        margin-left: 6rem;
     }
 
     .message button {
-        margin-left: 4rem;
+        margin-left: 5.5rem;
     }
 }
 
@@ -432,11 +432,15 @@ footer .container {
     }
 
     .message button {
-        margin-left: 3.5rem;
+        margin-left: 5rem;
+    }
+
+    .message label {
+        margin-left: 6rem;
     }
 
     .message textarea {
-        width: 140%;
+        width: 144%;
         border-radius: 5px;
         border: 0px;
     }
@@ -449,7 +453,7 @@ footer .container {
     }
 
     .message button {
-        margin-left: 3rem;
+        margin-left: 4rem;
     }
 
     .message textarea {
@@ -459,7 +463,7 @@ footer .container {
     }
 
     .message label {
-        margin-left: 4.5rem;
+        margin-left: 5rem;
     }
 }
 
@@ -474,7 +478,7 @@ footer .container {
     }
 
     .message button {
-        margin-left: 2.5rem;
+        margin-left: 4rem;
     }
 
     .message label {
@@ -482,7 +486,7 @@ footer .container {
     }
 
     .message textarea {
-        width: 136%;
+        width: 140%;
         border-radius: 5px;
         border: 0px;
     }
