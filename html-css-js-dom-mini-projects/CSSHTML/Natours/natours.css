@@ -1,16 +1,38 @@
-body {
-    font-family: Arial, sans-serif;
+@font-face {
+    font-family: "linea-basic-10";
+    src: url(./font/linea-basic-10\ basic-10.ttf) format("truetype");
+}
+*, *::after, *::before {
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
 }
 
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
-    text-align: center;
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #777;
+    box-sizing: border-box;
+    padding: 3rem;
+}
+
+
+
+.header {
+    height: 85vh;
+    background-image: -webkit-gradient(linear, left top, right bottom, from(rgba(126, 213, 111, 0.8)), to(rgba(40, 180, 133, 0.8))), url(./image/hero-small.jpg);
+    background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(./image/hero-small.jpg);
+    background-size: cover;
+    background-position: top;
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 }
 
 nav {
@@ -25,18 +47,91 @@ nav a {
     margin: 0 10px;
 }
 
-main {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    padding: 20px;
+
+.information{
+    max-width: 114rem;
+    margin: 0 auto;
+  
 }
 
-section {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.information::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+.about{
+
+    text-align: center !important;
+    margin-bottom: 8rem !important;
+
+}
+.section-one {
+    background-color: #f7f7f7;
+    padding: 25rem 0;
+    margin-top: -20vh;
+}
+
+.composition__photo {
+    width: 55%;
+    -webkit-box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+    border-radius: 2px;
+    position: absolute;
+    z-index: 10;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+    outline-offset: 2rem;
+}
+
+.composition__photo--p1 {
+    left: 0;
+    top: -2rem;
+}
+
+.composition__photo--p2 {
+    right: 0;
+    top: 2rem;
+}
+
+.composition__photo--p3 {
+    left: 20%;
+    top: 10rem;
+}
+
+.composition {
+    position: relative;
+}
+.col1{
+    
+    width: calc((100% - 6rem) / 2);    
+    float: left;
+    margin-right: 3rem;
+}
+
+
+
+.heading-information{
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem !important;
+
+}
+
+.section-one-div-h2{
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: inline-block;
+    background-image: -webkit-gradient(linear, left top, right top, from(#7ed56f), to(#28b485));
+    background-image: linear-gradient(to right, #7ed56f, #28b485);
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: .2rem;
+    -webkit-transition: all .2s;
+    transition: all .2s;
 }
 
 footer {
@@ -44,4 +139,149 @@ footer {
     color: #fff;
     text-align: center;
     padding: 10px 0;
+}
+
+
+.paragraph {
+    font-size: 1.6rem;
+    margin-bottom: 3rem;
+}
+
+.btn-text{
+    font-size: 1.6rem;
+    color: #55c57a;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px solid #55c57a;
+    padding: 3px;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+}
+
+.section-two-cards {
+    padding: 20rem 0;
+    background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(./image/nat-4.jpg);
+    background-size: cover;
+    transform: skewY(-7deg);
+    margin-top: -10rem;
+    height: 80vh;
+}
+
+.row-cards{
+    max-width: 114rem;
+    margin: 0 auto;
+    transform: skewY(+7deg);
+
+}
+
+.div-card{
+    float: left;
+    width: calc((100% - 3* 6rem) / 4);
+    margin-right: 4rem;
+}
+
+.card{
+    background-color: rgba(255, 255, 255, 0.8);
+    font-size: 1.5rem;
+    padding: 2.5rem;
+    text-align: center;
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+    transition: transform .3s, -webkit-transform .3s;
+    
+}
+
+.card_icon {
+    font-size: 6rem;
+    margin-bottom: .5rem;
+    display: inline-block;
+    background-image: -webkit-gradient(linear, left top, right top, from(#7ed56f), to(#28b485));
+    background-image: linear-gradient(to right, #7ed56f, #28b485);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+    font-family: "linea-basic-10" !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-basic-world:before {
+    content: "\e028";
+}
+
+.icon-basic-compass:before {
+    content: "B";
+}
+
+.icon-basic-map:before {
+    content: "+";
+}
+
+.icon-basic-heart:before {
+    content: "W";
+}
+
+
+.section-three-tours {
+    background-color: #f7f7f7;
+    padding: 25rem 0 15rem 0;
+    margin-top: -10rem;
+}
+
+.tour-cards{
+    max-width: 114rem;
+    margin: 0 auto;
+}
+
+
+.tours-card{
+    margin-right: 6rem;
+    width: calc((100% - 2* 6rem) / 3);
+    float: left;
+}
+
+.card-tour-content {
+    -webkit-perspective: 150rem;
+    perspective: 150rem;
+    position: relative;
+    height: 52rem;
+}
+
+.card_side-content {
+    height: 52rem;
+    -webkit-transition: all .8s ease;
+    transition: all .8s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 3px;
+    overflow: hidden;
+    -webkit-box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+}
+
+.card_side-content--front {
+    background-color: #fff;
+}
+
+.card-content-picture {
+    background-image: linear-gradient(to right bottom, #ffb900, #ff7730), url(./image/nat-5.jpg);
+    background-size: cover;
+    height: 23rem;
+    background-blend-mode: screen;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
 }

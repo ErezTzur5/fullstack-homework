@@ -4,29 +4,135 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="./natours.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900"
+      rel="stylesheet"
+    />
     <title>Erez Tzur</title>
   </head>
 
   <body>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-    </nav>
-    <header>
-      <h1>Your Website Title</h1>
-    </header>
+    <header class="header"></header>
 
     <main>
-      <section>
-        <h2>Section 1</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <section class="section-one">
+        <div class="about">
+          <h2 class="section-one-div-h2">
+            EXCITING TOURS FOR ADVENTUROUS PEOPLE
+          </h2>
+        </div>
+        <div class="information">
+          <div class="col1">
+            <h3 class="heading-information">
+              YOU'RE GOING TO FALL IN LOVE WITH NATURE
+            </h3>
+            <p class="paragraph">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque
+              iste nulla, impedit consectetur accusantium tenetur fugiat,
+              nesciunt animi sapiente dolores veniam aut ab officia illo minima
+              temporibus! Asperiores, quae recusandae.
+            </p>
+            <h3 class="heading-information">
+              LIVE ADVENTURES LIKE YOU NEVER HAVE BEFORE
+            </h3>
+            <p class="paragraph">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Asperiores nulla deserunt voluptatum nam.
+            </p>
+            <a href="#" class="btn-text">Learn more →</a>
+          </div>
+
+          <div class="col1 col2">
+            <div class="composition">
+              <img
+                srcset="./image/nat-1.jpg 300w, ./image/nat-1-large.jpg 1000w"
+                sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px"
+                alt="Photo 1"
+                class="composition__photo composition__photo--p1"
+                src="./image/nat-1.jpg"
+              />
+
+              <img
+                srcset="./image/nat-2.jpg 300w, ./image/nat-2-large.jpg 1000w"
+                sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px"
+                alt="Photo 2"
+                class="composition__photo composition__photo--p2"
+                src="img/nat-2-large.jpg"
+              />
+
+              <img
+                srcset="./image/nat-3.jpg 300w, ./image/nat-3-large.jpg 1000w"
+                sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px"
+                alt="Photo 3"
+                class="composition__photo composition__photo--p3"
+                src="img/nat-3-large.jpg"
+              />
+            </div>
+          </div>
+        </div>
       </section>
-      <section>
-        <h2>Section 2</h2>
-        <p>
-          Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
+
+      <section class="section-two-cards">
+        <div class="row-cards">
+          <div class="div-card">
+            <div class="card">
+              <i class="card_icon icon-basic-world"></i>
+              <h3 class="heading-information">Explore the world</h3>
+              <p class="">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Aperiam, ipsum sapiente aspernatur.
+              </p>
+            </div>
+          </div>
+
+          <div class="div-card">
+            <div class="card">
+              <i class="card_icon icon-basic-compass"></i>
+              <h3 class="heading-information">MEET NATURE</h3>
+              <p class="">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Aperiam, ipsum sapiente aspernatur.
+              </p>
+            </div>
+          </div>
+          <div class="div-card">
+            <div class="card">
+              <i class="card_icon icon-basic-map"></i>
+              <h3 class="heading-information">FIND YOUR WAY</h3>
+              <p class="">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Aperiam, ipsum sapiente aspernatur.
+              </p>
+            </div>
+          </div>
+          <div class="div-card">
+            <div class="card">
+              <i class="card_icon icon-basic-heart"></i>
+              <h3 class="heading-information">LIVE A HEALTHIER LIFE</h3>
+              <p class="">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Aperiam, ipsum sapiente aspernatur.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-three-tours">
+        <div class="about">
+          <h2 class="section-one-div-h2">Most popular tours</h2>
+        </div>
+        <div class="tour-cards">
+          <div class="tours-card">
+            <div class="card-tour-content">
+              <div class="card_side-content card_side-content--front">
+                <div class="card-content-picture">&nbsp;</div>
+              </div>
+            </div>
+          </div>
+          <div class="card-tour-content"></div>
+          <div class="card-tour-content"></div>
+        </div>
       </section>
     </main>
     <footer>

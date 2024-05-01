@@ -134,7 +134,7 @@ function incrementValue(btnId) {
 
 }
 
-function sendArray() {
+function sendArray() { // to do erez
     playerGuess = [];
     won.innerText = ""
     guessCount++;
