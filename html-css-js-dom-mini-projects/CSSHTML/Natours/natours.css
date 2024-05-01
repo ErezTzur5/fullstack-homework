@@ -253,6 +253,7 @@ footer {
     perspective: 150rem;
     position: relative;
     height: 52rem;
+    /* height: 25rem; */
 }
 
 .card_side-content {
