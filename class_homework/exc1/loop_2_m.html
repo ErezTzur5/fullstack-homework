@@ -1,35 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>loop_2_m</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <h1>loop_2_m</h1>
-</body>
-<script>
-
+  </body>
+  <script>
     window.alert("Please enter 5 numbers to calculate its sum and average!");
 
     let sum = 0;
     let count = 0;
 
     while (count < 5) {
-        let number = parseInt(prompt("Please enter number: "));
-        sum += number;
-        count++;
+      let number = parseInt(prompt("Please enter number: "));
+      sum += number;
+      count++;
     }
 
     let average = sum / 5;
 
     console.log("Sum: " + sum);
     console.log("Average: " + average);
-
-
-
-</script>
-
+  </script>
 </html>

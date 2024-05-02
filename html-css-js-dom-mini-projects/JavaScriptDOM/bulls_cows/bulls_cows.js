@@ -12,6 +12,7 @@ let startTime = 0;
 let endTime = 0;
 let durationInSeconds = 0;
 let timerInterval;
+const win = 4
 
 function startTimer() {
     startTime = performance.now();
@@ -38,7 +39,7 @@ function toggleScoreTable() {
     const scoreTable = document.getElementById('scoreTable');
     scoreVisible = !scoreVisible; // toggle visibility
     timeStamp = document.getElementById("durationDisplay").textContent
-    if (scoreVisible && bulls === 4) {
+    if (scoreVisible && bulls === win) {
         scoreTable.style.display = "block";
         updateScoreTable(player_name, guessCount, playerGuess, timeStamp);
     } else {
@@ -76,7 +77,7 @@ function generateRandomNumber() {
 
 function generateComputerNumber() {
     let number = [];
-    for (let i = 0; number.length < 4; i++) {
+    for (let i = 0; number.length < win; i++) {
         randomNumberHolder = generateRandomNumber();
         if (!number.includes(randomNumberHolder))
             number.push(randomNumberHolder);
@@ -101,14 +102,14 @@ function checkGuess(computerNumber, playerGuess) {
     bulls = 0;
     let cows = 0;
 
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < win; i++) {
         if (playerGuess[i] === computerNumber[i]) {
             bulls++;
         } else if (computerNumber.includes(playerGuess[i])) {
             cows++;
         }
     }
-    if (bulls === 4) {
+    if (bulls === win) {
 
         won.innerText = (`${player_name} Won!`)
         wonNumbers.textContent = computerNumber.join(' ')
@@ -134,11 +135,11 @@ function incrementValue(btnId) {
 
 }
 
-function sendArray() { // to do erez
+function sendGuess() {
     playerGuess = [];
     won.innerText = ""
     guessCount++;
-    for (let index = 0; playerGuess.length < 4; index++) {
+    for (let index = 0; playerGuess.length < win; index++) {
         let buttons = document.getElementById(`btn${index}`)
 
         let value = parseInt(buttons.innerText);
