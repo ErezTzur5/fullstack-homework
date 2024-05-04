@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>The Window Object</h1>
+    <h2>The localStorage Property</h2>
+    <label for="dataInput">Data:</label>
+    <input type="text" id="dataInput" /><br /><br />
+    <label for="contentInput">Content:</label>
+    <input type="text" id="contentInput" /><br /><br />
+    <label for="deleteInput">Delete by key</label>
+    <input type="text" id="deleteInput" /><br /><br />
+    <button onclick="setData()">Set Data</button>
+    <button onclick="getData()">Get Data</button>
+    <button onclick="deleteData()">delete Data</button>
+
+    <p>Saved data is:</p>
+    <p id="demo"></p>
+
+    <script>
+      function setData() {
+        let data = document.getElementById("dataInput").value;
+        let content = document.getElementById("contentInput").value;
+        localStorage.setItem(data, content);
+      }
+      function getData() {
+        let data = document.getElementById("dataInput").value;
+        document.getElementById("demo").innerHTML = localStorage.getItem(data);
+      }
+      function deleteData() {
+        let content = document.getElementById("deleteInput").value;
+        localStorage.removeItem(content);
+      }
+    </script>
+  </body>
+</html>

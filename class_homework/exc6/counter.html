@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counter</title>
+  </head>
+  <body>
+    <button onclick="addOne()">add</button>
+    <br /><span id="countID"></span>
+    <script>
+      let count = parseInt(localStorage.getItem("count")) || 0; // Retrieve count from localStorage or use 0 if not found
+      document.getElementById("countID").textContent = count; // Display count in the span element
+
+      function addOne() {
+        count++;
+        document.getElementById("countID").textContent = count;
+        localStorage.setItem("count", count);
+      }
+    </script>
+  </body>
+</html>

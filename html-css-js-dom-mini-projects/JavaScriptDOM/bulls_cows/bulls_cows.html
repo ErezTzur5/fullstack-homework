@@ -1,85 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bulls cows</title>
+    <link rel="stylesheet" href="./bulls_cows.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>bulls cows</title>
-  <link rel="stylesheet" href="./bulls_cows.css" />
-</head>
+  <body>
+    <form onsubmit="getName(); return false;">
+      <div class="nameHolder">
+        <div class="game-rules">
+          <h1>Welcome to Bulls and Cows game!</h1>
+          <p>
+            Bulls and Cows is a classic code-breaking game where you try to
+            guess a secret code. In this game, the computer will generate a
+            random 4-digit number, and your goal is to guess the number in as
+            few attempts as possible.
+          </p>
+          <p>
+            <span style="color: green">A bull</span> bull means you have guessed
+            a digit correctly and it is in the right position.<br />
+            <span style="color: blue">A cow</span> means you have guessed a
+            digit correctly, but it is in the wrong position.
+          </p>
+          <p>Good luck and have fun playing!</p>
+        </div>
 
-<body>
-  <form onsubmit="getName(); return false;">
-    <div class="nameHolder">
-      <div class="game-rules">
-        <h1>Welcome to Bulls and Cows game!</h1>
-        <p>
-          Bulls and Cows is a classic code-breaking game where you try to guess a secret code.
-          In this game, the computer will generate a random 4-digit number, and your goal is to guess the number in as
-          few
-          attempts as possible.
-        </p>
-        <p>
-          <span style="color: green;">A bull</span> bull means you have guessed a digit correctly and it is in the right
-          position.<br>
-          <span style="color: blue;">A cow</span> means you have guessed a digit correctly, but it is in the wrong
-          position.
-        </p>
-        <p>
-          Good luck and have fun playing!
-        </p>
+        <label class="user-submit-area">
+          <input
+            placeholder="Please enter your name"
+            class="form-field"
+            type="text"
+            id="nameInput"
+            name="username"
+            onkeydown="if(event.keyCode==13) getName();"
+          />
+          <button type="submit" ; class="user-submit-button">Submit</button>
+        </label>
       </div>
+    </form>
 
-      <label class="user-submit-area">
-        <input placeholder="Please enter your name" class="form-field" type="text" id="nameInput" name="username"
-          onkeydown="if(event.keyCode==13) getName();">
-        <button type="submit" ; class="user-submit-button">Submit</button>
-      </label>
-
-    </div>
-  </form>
-
-  <div class="container">
-    <span id="durationDisplay"></span>
-    <h1>Welcome to cows and bulls</h1>
-    <div class="row">
-      <span class="number">? ? ? ?</span>
-      <div>
-        <span class="bull">Bulls</span>
-        <span class="cow">Cows</span>
-      </div>
-    </div>
-    <div class="result-row"></div>
-    <div class="inner-container">
-      <div class="">
-        <button class="buttons" id="btn0" onclick="incrementValue('btn0')">0</button>
-        <button class="buttons" id="btn1" onclick="incrementValue('btn1')">1</button>
-        <button class="buttons" id="btn2" onclick="incrementValue('btn2')">2</button>
-        <button class="buttons" id="btn3" onclick="incrementValue('btn3')">3</button>
-        <button class="buttons" onclick="sendArray()">Guess</button>
-        <button class="buttons" onclick="newGame()">New game</button>
-        <button id="score" class="buttons" onclick="toggleScoreTable()">Score</button>
-        <div class="score" id="scoreTable">
-          <span class="close" onclick="toggleScoreTable()">&times;</span>
-          <table id="scoreTable">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Guess Count</th>
-                <th>Winning Numbers</th>
-                <th>Time</th>
-              </tr>
-            </thead>
-            <tbody id="scoreBody"></tbody>
-          </table>
+    <div class="container">
+      <span id="durationDisplay"></span>
+      <h1>Welcome to cows and bulls</h1>
+      <div class="row">
+        <span class="number">? ? ? ?</span>
+        <div>
+          <span class="bull">Bulls</span>
+          <span class="cow">Cows</span>
         </div>
       </div>
+      <div class="result-row"></div>
+      <div class="inner-container">
+        <div class="">
+          <button class="buttons" id="btn0" onclick="incrementValue('btn0')">
+            0
+          </button>
+          <button class="buttons" id="btn1" onclick="incrementValue('btn1')">
+            1
+          </button>
+          <button class="buttons" id="btn2" onclick="incrementValue('btn2')">
+            2
+          </button>
+          <button class="buttons" id="btn3" onclick="incrementValue('btn3')">
+            3
+          </button>
+          <button class="buttons" onclick="sendGuess()">Guess</button>
+          <button class="buttons" onclick="newGame()">New game</button>
+          <button id="score" class="buttons" onclick="toggleScoreTable()">
+            Score
+          </button>
+          <div class="score" id="scoreTable">
+            <span class="close" onclick="toggleScoreTable()">&times;</span>
+            <table id="scoreTable">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Guess Count</th>
+                  <th>Winning Numbers</th>
+                  <th>Time</th>
+                </tr>
+              </thead>
+              <tbody id="scoreBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <span class="won"></span>
+      <div class="score"></div>
     </div>
-    <span class="won"></span>
-    <div class="score"></div>
-  </div>
 
-  <script src="./bulls_cows.js"></script>
-</body>
-
+    <script src="./bulls_cows.js"></script>
+  </body>
 </html>
