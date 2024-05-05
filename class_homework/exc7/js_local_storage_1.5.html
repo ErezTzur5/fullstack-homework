@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counter</title>
+  </head>
+  <body>
+    <button onclick="Increment('countID', 'count')">
+      Increment paragraph 1
+    </button>
+    <button onclick="Increment('countID2', 'count2')">
+      Increment paragraph 2
+    </button>
+    <br />
+    <p id="countID"></p>
+    <p id="countID2"></p>
+    <script>
+      let count = parseInt(localStorage.getItem("count")) || 0; // retrieve count from localStorage or use 0 if not found
+      document.getElementById("countID").textContent = count; // display count in the p element
+
+      let count2 = parseInt(localStorage.getItem("count2")) || 0;
+      document.getElementById("countID2").textContent = count2;
+
+      function Increment(element, key) {
+        if (key === "count2") {
+          count2++;
+          localStorage.setItem(key, count2); // Update count2 in localStorage
+          document.getElementById(element).textContent = count2; // Display count2 in the p element
+        }
+        if (key === "count") {
+          count++;
+          localStorage.setItem(key, count); // Update count in localStorage
+          document.getElementById(element).textContent = count; // Display count in the p element
+        }
+      }
+    </script>
+  </body>
+</html>

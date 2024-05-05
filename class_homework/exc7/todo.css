@@ -1,0 +1,60 @@
+/* Style for the to-do list container */
+html{
+    background: #e0e0e0;
+}
+#todo {
+    margin-top: 20px;
+  }
+  
+  /* Style for each to-do item */
+  .todo-item {
+    list-style-type: none;
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+
+  
+  /* Style for the input field */
+  #dataInput {
+    width: 200px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  /* Style for buttons */
+  button {
+    padding: 8px 16px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Style for the clear button */
+  button.clear {
+    background-color: #f44336;
+  }
+  
+  button.clear:hover {
+    background-color: #d32f2f;
+  }
+  
+
+  .green-bg {
+    background-color: #8bc34a; 
+  }
+  
+  .red-bg {
+    background-color: #f44336;
+  }

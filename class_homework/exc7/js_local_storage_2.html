@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To do</title>
+  </head>
+  <body>
+    <button onclick="toDo()">add To do</button>
+    <label for="dataInput">To do:</label>
+    <input type="text" id="dataInput" /><br /><br />
+    <button onclick="clearitem()">Clear</button
+    ><!-- need to work on it (sort) -->
+
+    <div id="todo"></div>
+
+    <script>
+      let toDoArray = [];
+
+      loadFromLocalStorage();
+
+      function loadFromLocalStorage() {
+        for (let i = 0; i < localStorage.length; i++) {
+          let key = localStorage.key(i);
+          let value = localStorage.getItem(key);
+          createsList(JSON.parse(value), key); // Pass the key as index to createsList
+        }
+      }
+
+      function toDo() {
+        const DATA = document.getElementById("dataInput").value;
+
+        toDoArray.push(DATA);
+        saveLocalStorage(toDoArray);
+        createsList(DATA, localStorage.length - 1); // Pass the index of the newly added item
+        document.getElementById("dataInput").value = ""; // clear the input field
+      }
+
+      function saveLocalStorage(toDoArray) {
+        const index = localStorage.length; // get the next available index
+        localStorage.setItem(
+          index,
+          JSON.stringify(toDoArray[toDoArray.length - 1])
+        );
+      }
+
+      function removeElement(index) {
+        localStorage.removeItem(index); // Remove the item with the specified index
+      }
+
+      function createsList(DATA, index) {
+        const container = document.querySelector("#todo");
+
+        const newRow = document.createElement("ul");
+
+        const newLi = document.createElement("li");
+        newLi.classList.add("todo-item");
+        newLi.addEventListener("click", () => {
+          removeElement(index); // Pass the index to removeElement
+          newLi.remove(); // remove the clicked li element
+        });
+
+        newLi.textContent = DATA;
+        newRow.appendChild(newLi);
+        container.appendChild(newRow);
+      }
+      function clearitem() {
+        localStorage.clear();
+        const container = document.querySelector("#todo");
+        container.innerHTML = ""; // Remove all child elements
+      }
+    </script>
+  </body>
+</html>
