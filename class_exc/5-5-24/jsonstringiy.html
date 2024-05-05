@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON</title>
+  </head>
+  <body>
+    <script>
+      var obj = [1, 5, 5, 7, 6];
+      console.log("obj", typeof obj);
+
+      objString = JSON.stringify(obj);
+      console.log("objString", objString);
+      console.log("objString", typeof objString);
+      objInt = JSON.parse(objString);
+      console.log("objInt", typeof objInt);
+      console.log("objInt", objInt);
+    </script>
+  </body>
+</html>

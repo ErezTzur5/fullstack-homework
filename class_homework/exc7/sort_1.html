@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sort_1</title>
+  </head>
+  <body>
+    <script>
+      const numbersarray = [5, 6, 1, 3, 2, 4, 0]; // original list
+
+      function findMin(array) {
+        let minNum = array[0];
+        for (let index = 0; index < array.length; index++) {
+          if (array[index] < minNum) {
+            minNum = array[index];
+          }
+        }
+        return minNum; // searching in the array for the lowest number and returns it.
+      }
+
+      function sortArrayWithoutModifying(array) {
+        const sortedArray = []; // initializing the sorted array without changing the original.
+
+        const tempArray = array.slice(); // temp array to hold the original array , that will prevent from editing the original array.
+
+        while (tempArray.length > 0) {
+          const min = findMin(tempArray);
+          sortedArray.push(min);
+          tempArray.splice(tempArray.indexOf(min), 1);
+        }
+
+        return sortedArray;
+        // this function will run the same time as the lenght of the array , it wil call the function to find the lower number
+        // push it and then delete it from the temp array and will continue running of the temp array.
+      }
+
+      const newnumbersarray = sortArrayWithoutModifying(numbersarray);
+
+      console.log("Original Array:", numbersarray);
+      console.log("Sorted Array:", newnumbersarray);
+    </script>
+  </body>
+</html>
