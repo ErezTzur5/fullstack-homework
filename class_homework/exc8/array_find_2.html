@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>array_find_2</title>
+  </head>
+  <body>
+    <script>
+      function checkForAgeInArray(names, age) {
+        const ageFound = names.find((num) => num.age === age); // this is arrow function (anonimous function)
+        if (ageFound) {
+          return ageFound;
+        }
+        if (ageFound == undefined) {
+          return "No";
+        }
+      }
+      let names = [
+        { name: "Moshe Kupernikos", age: 33 },
+        { name: "Shimon", age: 21 },
+        { name: "Joe", age: 34 },
+      ];
+      console.log(checkForAgeInArray(names, 333));
+      console.log(checkForAgeInArray(names, 33));
+    </script>
+  </body>
+</html>

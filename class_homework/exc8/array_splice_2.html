@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>array_splice_2</title>
+  </head>
+  <body>
+    <script>
+      function deleteLastObject(names, index) {
+        names.splice(index, 1);
+        return names;
+      }
+      let names = [
+        { name: "Moshe Kupernikos", age: 33 },
+        { name: "Shimon", age: 21 },
+        { name: "Joe", age: 34 },
+      ];
+      console.log(deleteLastObject(names, 0));
+    </script>
+  </body>
+</html>

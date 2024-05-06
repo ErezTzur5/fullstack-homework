@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>array_find_1</title>
+  </head>
+  <body>
+    <script>
+      function checkForNum(numbers, numCheck) {
+        const numberFound = numbers.find((num) => num === numCheck); // this is arrow function (anonimous function)
+        if (numberFound) {
+          return "Yes";
+        }
+        if (numberFound == undefined) {
+          return "No";
+        }
+      }
+      let numbers = [1, 3, 5, -2, 7];
+      console.log(checkForNum(numbers, 5)); // returns yes
+      console.log(checkForNum(numbers, 55)); // returns no
+    </script>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>map_1</title>
+  </head>
+  <body>
+    <ol></ol>
+    <script>
+      const names = ["Alice", "Bob", "Charlie", "David"];
+      function createList(names) {
+        const olElement = document.querySelector("ol");
+
+        names.map((name) => {
+          const liElement = document.createElement("li");
+          liElement.textContent = name;
+          olElement.appendChild(liElement);
+        });
+      }
+      createList(names);
+    </script>
+  </body>
+</html>
