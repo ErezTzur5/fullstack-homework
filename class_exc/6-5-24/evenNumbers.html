@@ -7,12 +7,13 @@
   </head>
   <body>
     <script>
-      function checkForEvenNumbsArray(numbers) {
-        const numberFound = numbers.filter((num) => num % 2 === 0); // this is arrow function (anonimous function)
-        return numberFound;
+      function checkForEvenNumbs(numbers) {
+        const numberFound = numbers.find((num) => num % 2 === 0); // this is arrow function (anonimous function)
+
+        return numberFound != undefined;
       }
       let numbers = [1, 2, 4, 3, 5, 11];
-      console.log(checkForEvenNumbsArray(numbers));
+      console.log(checkForEvenNumbs(numbers));
     </script>
   </body>
 </html>

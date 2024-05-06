@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>String names in list without loop</title>
+  </head>
+  <body>
+    <div id="todo"></div>
+    <script>
+      const names = ["nir", "ron", "nati", "erez", "natan"];
+
+      function createsList(names) {
+        const container = document.querySelector("#todo");
+
+        const olElement = document.createElement("ol");
+
+        names.map((name) => {
+          const liElement = document.createElement("li");
+          liElement.textContent = name;
+          olElement.appendChild(liElement);
+        });
+
+        container.appendChild(olElement);
+      }
+      createsList(names);
+    </script>
+  </body>
+</html>
