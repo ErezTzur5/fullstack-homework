@@ -7,12 +7,8 @@
   </head>
   <body>
     <script>
-      function checkAge(number) {
-        return number > 10;
-      }
-
       function findIfItemGreatThan10(numbers) {
-        const numberFound = numbers.find(checkAge); // this is arrow function (anonimous function)
+        const numberFound = numbers.find((num) => num > 10); // this is arrow function (anonimous function)
         return numberFound != undefined;
       }
       let numbers = [1, 2, 3, 4, 5, 6, 11];

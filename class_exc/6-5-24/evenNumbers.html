@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find items</title>
+  </head>
+  <body>
+    <script>
+      function checkForEvenNumbsArray(numbers) {
+        const numberFound = numbers.filter((num) => num % 2 === 0); // this is arrow function (anonimous function)
+        return numberFound;
+      }
+      let numbers = [1, 2, 4, 3, 5, 11];
+      console.log(checkForEvenNumbsArray(numbers));
+    </script>
+  </body>
+</html>
