@@ -1,0 +1,28 @@
+body {
+    display: flex;
+    justify-content: center; /* Horizontally centers the child elements */
+    align-items: center; /* Vertically centers the child elements */
+    height: 100vh; /* Ensures the body covers the entire viewport height */
+  }
+  
+  div {
+    text-align: center; /* Centers the content inside the div */
+  }
+
+span {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: #007bff; /* Blue color, you can change it as needed */
+    color: #fff; /* White text color */
+    border-radius: 50%; /* Makes it round */
+    text-align: center;
+    line-height: 30px; /* Centers the text vertically */
+    margin: 5px; /* Adds some spacing between spans */
+    cursor: pointer; /* Changes cursor to pointer on hover */
+  }
+  
+  span:hover {
+    background-color: #0056b3; /* Darker blue color on hover */
+  }
+  
