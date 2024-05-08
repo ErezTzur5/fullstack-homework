@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./addListenerMouse.css" />
+  </head>
+  <body>
+    <div id="myDiv"></div>
+    <span></span>
+    <script>
+      let startTime = 0;
+      let endTime = 0;
+      let duration = 0;
+      const divClick = document.querySelector("#myDiv");
+
+      function clickDurationMouseUp() {
+        if (startTime === 0) {
+          startTime = performance.now();
+        }
+      }
+
+      function clickDurationMouseDown() {
+        endTime = performance.now();
+        duration = (endTime - startTime) / 1000; // Convert milliseconds to seconds
+        // console.log("Duration:", duration.toFixed(2), "seconds");
+        // Reset start time for next click
+        startTime = 0;
+        return duration;
+      }
+
+      function secondsInDom(duration) {
+        let span = document.querySelector("span");
+        span.textContent = `Duration:, ${duration.toFixed(2)}, seconds`;
+      }
+
+      divClick.addEventListener("mousedown", function () {
+        const duration = clickDurationMouseUp();
+      });
+
+      divClick.addEventListener("mouseup", function () {
+        const duration = clickDurationMouseDown();
+        secondsInDom(duration);
+      });
+    </script>
+  </body>
+</html>
