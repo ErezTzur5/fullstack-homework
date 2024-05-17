@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timer Example</title>
+  </head>
+  <body>
+    <p>Seconds since page opened: <span id="timer">0</span></p>
+    <button id="stopButton">Stop Timer</button>
+
+    <script>
+      let seconds = 0;
+
+      const updateTimer = () => {
+        seconds++;
+        document.getElementById("timer").innerText = seconds;
+      };
+
+      const intervalId = setInterval(updateTimer, 1000);
+
+      const stopTimer = () => {
+        clearInterval(intervalId);
+      };
+
+      document
+        .getElementById("stopButton")
+        .addEventListener("click", stopTimer);
+    </script>
+  </body>
+</html>
