@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>set_interval_2</title>
+  </head>
+  <body>
+    <button onclick="start(1000)" id="sortButton">Sort Numbers</button>
+    <div id="output"></div>
+
+    <script>
+      let numbers = [5, 3, 4, 8, 7, 9, 1];
+      let currentIndex = 0;
+
+      function sortArray() {
+        const length = numbers.length;
+        const outputDiv = document.getElementById("output");
+
+        if (currentIndex < length - 1) {
+          let swapped = false;
+          for (let j = 0; j < length - currentIndex - 1; j++) {
+            if (numbers[j] > numbers[j + 1]) {
+              let temp = numbers[j];
+              numbers[j] = numbers[j + 1];
+              numbers[j + 1] = temp;
+              swapped = true;
+            }
+          }
+
+          // create a new <p> element after each iteration
+          const p = document.createElement("p");
+          p.textContent = numbers.join(", ");
+          outputDiv.appendChild(p);
+
+          if (swapped) {
+            currentIndex++;
+          } else {
+            // if no swaps were made, sorting is complete
+            clearInterval(intervalId);
+          }
+        } else {
+          // sorting is complete
+          clearInterval(intervalId);
+        }
+      }
+
+      function start(seconds) {
+        const intervalId = setInterval(sortArray, 1000);
+      }
+    </script>
+  </body>
+</html>
