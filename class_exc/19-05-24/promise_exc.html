@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>promise_exc</title>
+  </head>
+  <body>
+    <form id="numberForm">
+      <label for="numberInput">Enter a number:</label>
+      <input type="number" id="numberInput" name="numberInput" />
+      <button onclick="return handleNumber()">Check Number</button>
+    </form>
+    <div id="result"></div>
+    <script>
+      function handleNumber() {
+        var number = document.getElementById("numberInput").value;
+        isEvenAsync(number)
+          .then((result) => {
+            displayResult(result);
+          })
+          .catch((error) => {
+            console.error(error);
+            displayResult(error);
+          });
+
+        return false; // Prevent default form submission
+      }
+
+      function isEvenAsync(userNumber) {
+        return new Promise((resolve, reject) => {
+          if (Number(userNumber)) {
+            resolve(userNumber % 2 === 0);
+          } else {
+            reject("Validation error: Not a valid number");
+          }
+        });
+      }
+
+      function displayResult(result) {
+        var resultContainer = document.getElementById("result");
+        var newParagraph = document.createElement("p");
+        newParagraph.textContent = result
+          ? "The number is even"
+          : "The number is odd";
+        resultContainer.appendChild(newParagraph);
+      }
+    </script>
+  </body>
+</html>

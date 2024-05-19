@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>failing promise</title>
+  </head>
+  <body>
+    <script>
+      const rejectHandler = (val) => console.log(val);
+      const promise = new Promise((resolve, reject) => {
+        reject("failing promise");
+      });
+      promise.catch(rejectHandler);
+    </script>
+  </body>
+</html>

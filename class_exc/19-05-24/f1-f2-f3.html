@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>f1-f2-f3</title>
+  </head>
+  <body>
+    <script>
+      let seconds = 0;
+      const updateTimer = () => {
+        seconds++;
+        console.log("seconds passed: ", seconds);
+      };
+
+      const f1 = () => {
+        console.log("f1");
+      };
+
+      const f2 = () => {
+        console.log("f2");
+      };
+
+      const f3 = () => {
+        console.log("f3");
+      };
+
+      const intervalId = setInterval(updateTimer, 1000);
+
+      setTimeout(() => {
+        f1();
+        setTimeout(() => {
+          f2();
+          setTimeout(() => {
+            f3();
+          }, 3000);
+        }, 3000);
+      }, 1000);
+    </script>
+  </body>
+</html>
