@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise 1</title>
+  </head>
+  <body>
+    <button id="resolveButton">Resolve</button>
+    <button id="rejectButton">Reject</button>
+    <div id="resolve"></div>
+    <div id="reject"></div>
+
+    <script>
+      let resolvePromise;
+      let rejectPromise;
+
+      const promise = new Promise((resolve, reject) => {
+        resolvePromise = resolve;
+        rejectPromise = reject;
+      });
+
+      document.getElementById("resolveButton").addEventListener("click", () => {
+        setTimeout(() => {
+          resolvePromise("done");
+          document.getElementById("resolve").innerHTML = "Success";
+        }, 2000);
+      });
+
+      document.getElementById("rejectButton").addEventListener("click", () => {
+        setTimeout(() => {
+          rejectPromise("error");
+          document.getElementById("reject").innerHTML = "Failure";
+        }, 3000);
+      });
+
+      promise
+        .then((result) => {
+          console.log(result); // logs "done" if resolved
+        })
+        .catch((error) => {
+          console.log(error); // logs "error" if rejected
+        });
+    </script>
+  </body>
+</html>
