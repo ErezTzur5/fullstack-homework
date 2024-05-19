@@ -3,61 +3,82 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="./axios.css" />
     <title>Document</title>
   </head>
   <body>
+    <div class="loader"></div>
     <div id="result"></div>
     <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
 
     <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelector(".loader").style.display = "block";
+        document.getElementById("result").style.display = "none";
+
+        setTimeout(getDataFromApi, 5000);
+      });
+
       const url = "https://jsonplaceholder.typicode.com/posts";
-      axios
-        .get(url)
-        .then(function (response) {
-          // handle success
+      function getDataFromApi() {
+        axios
+          .get(url)
+          .then(function (response) {
+            // Hide loader and show result
+            document.querySelector(".loader").style.display = "none";
+            document.getElementById("result").style.display = "block";
 
-          const resultContainer = document.getElementById("result");
-          const newParagraphDataAmount = document.createElement("p");
-          newParagraphDataAmount.textContent = `data amount: ${response.data.length}`;
-          resultContainer.appendChild(newParagraphDataAmount);
+            const resultContainer = document.getElementById("result");
+            const newParagraphDataAmount = document.createElement("p");
+            newParagraphDataAmount.textContent = `Data amount: ${response.data.length}`;
+            resultContainer.appendChild(newParagraphDataAmount);
 
-          // create table
-          const table = document.createElement("table");
-          resultContainer.appendChild(table);
+            // Create table
+            const table = document.createElement("table");
+            resultContainer.appendChild(table);
 
-          // create table headers
-          const thead = document.createElement("thead");
-          table.appendChild(thead);
-          const headerRow = document.createElement("tr");
-          thead.appendChild(headerRow);
+            // Create table headers
+            const thead = document.createElement("thead");
+            table.appendChild(thead);
+            const headerRow = document.createElement("tr");
+            thead.appendChild(headerRow);
 
-          const headers = Object.keys(response.data[0]);
-          headers.forEach(function (header) {
-            const th = document.createElement("th");
-            th.textContent = header;
-            headerRow.appendChild(th);
-          });
-
-          // create table body
-          const tbody = document.createElement("tbody");
-          table.appendChild(tbody);
-
-          // create rows and cells with data
-          response.data.forEach(function (item) {
-            const row = document.createElement("tr");
-            tbody.appendChild(row);
-
+            const headers = Object.keys(response.data[0]);
             headers.forEach(function (header) {
-              const cell = document.createElement("td");
-              cell.textContent = item[header];
-              row.appendChild(cell);
+              const th = document.createElement("th");
+              th.textContent = header;
+              headerRow.appendChild(th);
             });
+
+            // Create table body
+            const tbody = document.createElement("tbody");
+            table.appendChild(tbody);
+
+            // Create rows and cells with data
+            response.data.forEach(function (item) {
+              const row = document.createElement("tr");
+              tbody.appendChild(row);
+
+              headers.forEach(function (header) {
+                const cell = document.createElement("td");
+                cell.textContent = item[header];
+                row.appendChild(cell);
+              });
+            });
+          })
+          .catch(function (error) {
+            // Hide loader and show error message
+            document.querySelector(".loader").style.display = "none";
+            document.getElementById("result").style.display = "block";
+
+            const resultContainer = document.getElementById("result");
+            const errorMessage = document.createElement("p");
+            errorMessage.textContent = "An error occurred while fetching data.";
+            resultContainer.appendChild(errorMessage);
+
+            console.log(error);
           });
-        })
-        .catch(function (error) {
-          // handle error
-          console.log(error);
-        });
+      }
     </script>
   </body>
 </html>
