@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promise 2.5</title>
+</head>
+
+<body>
+  <!--  
+ 	
+write a function isEvenAsync that get a value as argument and return a promise. 
+if isEvenAsync argument is number and is even -> call resolve with true.
+if the isEvenAsync  argument  is number and is odd -> call resolve with false.
+if isEvenAsync argument is not number -> call reject with 'validation error'. 
+use console.log for fulfil handler and reject handler
+
+-->
+  <div id="fetch-data"></div>
+  <script>
+    function isEvenAsync(value) {
+      const prom = new Promise((resolve, reject) => {
+        if (Number(value)) {
+          if (value % 2 == 0) {
+            resolve('true (even number)')
+          }
+          else {
+            resolve('false (odd number)')
+          }
+
+        }
+        else {
+          reject('validation error')
+        }
+      });
+      return prom
+    }
+
+    isEvenAsync('d')
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+  </script>
+</body>
+
+</html>

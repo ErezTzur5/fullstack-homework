@@ -21,12 +21,12 @@
       setTimeout(getDataFromApi, 5000);
     });
 
-    const url = "https://jsonplaceholder.typicode.com/posts";
+    const url = "https://jsonplaceholder.typicode.com/comments";
     function getDataFromApi() {
       axios
         .get(url)
         .then(function (response) {
-          // Hide loader and show result
+          // hide loader and show result
           document.querySelector(".loader").style.display = "none";
           document.getElementById("result").style.display = "block";
 
@@ -35,28 +35,29 @@
           newParagraphDataAmount.textContent = `Data amount: ${response.data.length}`;
           resultContainer.appendChild(newParagraphDataAmount);
 
-          // Create table
+          // create table
           const table = document.createElement("table");
           resultContainer.appendChild(table);
 
-          // Create table headers
+          // create table headers
           const thead = document.createElement("thead");
           table.appendChild(thead);
           const headerRow = document.createElement("tr");
           thead.appendChild(headerRow);
 
           const headers = Object.keys(response.data[0]);
+          console.log(headers);
           headers.forEach(function (header) {
             const th = document.createElement("th");
             th.textContent = header;
             headerRow.appendChild(th);
           });
 
-          // Create table body
+          // create table body
           const tbody = document.createElement("tbody");
           table.appendChild(tbody);
 
-          // Create rows and cells with data
+          // create rows and cells with data
           response.data.forEach(function (item) {
             const row = document.createElement("tr");
             tbody.appendChild(row);
@@ -69,7 +70,7 @@
           });
         })
         .catch(function (error) {
-          // Hide loader and show error message
+          // hide loader and show error message
           document.querySelector(".loader").style.display = "none";
           document.getElementById("result").style.display = "block";
 

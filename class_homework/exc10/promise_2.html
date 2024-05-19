@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promise 2</title>
+</head>
+
+<body>
+  <!-- Write a function fetchData that returns a Promise which resolves to the string "Data fetched" after 2 seconds -->
+  <div id="fetch-data"></div>
+  <script>
+    function fetchData() {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve("Data fetched");
+        }, 2000);
+      });
+    }
+
+    fetchData().then((result) => {
+      console.log(result);
+    });
+  </script>
+</body>
+
+</html>
