@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="./axios.css" />
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    <div id="loader"></div>
+    <table id="postDiv"></table>
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+    <script>
+      const postDiv = document.getElementById("postDiv");
+      const loader = document.getElementById("loader");
+      const url = "https://jsonplaceholder.typicode.com/posts";
+      const userUrl = "https://jsonplaceholder.typicode.com/users";
+      let th = document.createElement("tr");
+      let userArray = [];
+      function createTable() {
+        th.innerHTML = `<th>User name</th><th>id</th><th>title</th><th>body</th>`;
+        postDiv.appendChild(th);
+      }
+
+      function getUserData() {
+        loader.style.display = "none";
+        createTable();
+        axios.get(userUrl).then(function (userData) {
+          userArray = [...userData.data];
+          console.log(userArray);
+          console.log(userArray[0].username);
+          axios.get(url).then((posts) => {
+            for (post of posts.data) {
+              let tr = document.createElement("tr");
+              tr.innerHTML = `<td>${
+                userArray[post.userId - 1].username
+              }</td><td>${post.id}</td><td>${post.title}</td><td>${
+                post.body
+              }</td>`;
+              postDiv.appendChild(tr);
+            }
+          });
+        });
+      }
+
+      setTimeout(getUserData, 3000);
+    </script>
+  </body>
+</html>
