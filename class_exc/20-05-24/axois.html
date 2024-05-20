@@ -6,7 +6,6 @@
     <link rel="stylesheet" type="text/css" href="./axios.css" />
     <title>Document</title>
   </head>
-
   <body>
     <div class="loader"></div>
     <div id="result"></div>
@@ -16,15 +15,32 @@
       document.addEventListener("DOMContentLoaded", function () {
         document.querySelector(".loader").style.display = "block";
         document.getElementById("result").style.display = "none";
-
         setTimeout(getDataFromApi, 1000);
       });
 
-      const url = "https://jsonplaceholder.typicode.com/posts";
-      function getDataFromApi() {
-        axios
-          .get(url)
+      const urlPosts = "https://jsonplaceholder.typicode.com/posts";
+      const urlUsers = "https://jsonplaceholder.typicode.com/users";
+
+      function getUserNameById(id) {
+        return axios
+          .get(urlUsers)
           .then(function (response) {
+            const user = response.data.find((user) => user.id === id);
+            if (user) {
+              return user.name;
+            } else {
+              return "User not found";
+            }
+          })
+          .catch(function (error) {
+            console.log(error);
+            return "Error fetching user";
+          });
+      }
+      async function getDataFromApi() {
+        axios
+          .get(urlPosts)
+          .then(async function (response) {
             // hide loader and show result
             document.querySelector(".loader").style.display = "none";
             document.getElementById("result").style.display = "block";
@@ -57,16 +73,24 @@
             table.appendChild(tbody);
 
             // create rows and cells with data
-            response.data.forEach(function (item) {
+            for (const item of response.data) {
               const row = document.createElement("tr");
               tbody.appendChild(row);
 
-              headers.forEach(function (header) {
+              for (const header of headers) {
                 const cell = document.createElement("td");
-                cell.textContent = item[header];
+
+                if (header === "userId") {
+                  // Fetch the username and set it as cell content
+                  const userName = await getUserNameById(item[header]);
+                  cell.textContent = userName;
+                } else {
+                  cell.textContent = item[header];
+                }
+
                 row.appendChild(cell);
-              });
-            });
+              }
+            }
           })
           .catch(function (error) {
             // hide loader and show error message

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <ul id="taskList"></ul>
+    <input id="btn" type="button" value="Remove Childrens" />
+  </body>
+
+  <script>
+    let toDoArray = [
+      "Get Up in Morning",
+      "Do some exercise",
+      "Do homework",
+      "Get Ready for school",
+      "Study Daily",
+      "Do homework",
+    ];
+
+    function createLists(data) {
+      let list = document.getElementById("taskList");
+      data.forEach((item) => {
+        let li = document.createElement("li");
+        li.textContent = item;
+        list.appendChild(li);
+      });
+    }
+    createLists(toDoArray);
+
+    function removeItem(event) {
+      let item = event.target;
+      let list = document.getElementById("taskList");
+      let index = Array.prototype.indexOf.call(list.children, item);
+      toDoArray.splice(index, 1);
+      item.remove();
+      console.log("Updated array:", toDoArray);
+    }
+
+    function attachEventListeners() {
+      let listItems = document.querySelectorAll("#taskList li");
+      listItems.forEach((item) => {
+        item.addEventListener("click", removeItem);
+      });
+    }
+
+    function deleteChild() {
+      let e = document.getElementById("taskList");
+      while (e.children.length > 0) {
+        let child = e.lastElementChild;
+        let index = Array.prototype.indexOf.call(e.children, child);
+        console.log(index);
+        toDoArray.splice(index, 1);
+        e.removeChild(child);
+      }
+      console.log("All items removed, updated array:", toDoArray);
+    }
+
+    document.getElementById("btn").onclick = function () {
+      deleteChild();
+    };
+
+    window.onload = attachEventListeners;
+  </script>
+</html>

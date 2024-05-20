@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="./axios.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="loader"></div>
+    <ol id="postDiv"></ol>
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+    <script>
+      const postDiv = document.getElementById("postDiv");
+      const url1 = "https://jsonplaceholder.typicode.com/posts/2";
+      const url2 = "https://jsonplaceholder.typicode.com/posts/5";
+      const url3 = "https://jsonplaceholder.typicode.com/posts/11";
+      const users = "https://jsonplaceholder.typicode.com/users";
+      setTimeout(getData, 2000);
+
+      function getUserName(id) {
+        return axios
+          .get(users)
+          .then((response) => {
+            return response.data[id].name;
+          })
+          .catch((error) => {
+            console.error("Error fetching user data:", error);
+            // handle error or return a default value
+            return null;
+          });
+      }
+      // getUsers();
+
+      function getData() {
+        document.querySelector("#loader").style.display = "none";
+
+        axios.get(url1).then(function (event) {
+          // console.log(event.data.id);
+          getUserName(event.data.id)
+            .then((name) => {
+              let author = document.createElement("p");
+              author.innerText = name; // This will log the user's name
+              postDiv.appendChild(author);
+            })
+            .catch((error) => {
+              console.error("Error fetching user data:", error);
+            });
+          let listItem = document.createElement("li");
+
+          listItem.textContent = event.data.body;
+          postDiv.appendChild(listItem);
+        });
+        axios.get(url2).then((event) => {
+          let listItem = document.createElement("li");
+          listItem.textContent = event.data.body;
+          postDiv.appendChild(listItem);
+        });
+
+        axios.get(url3).then((event) => {
+          let listItem = document.createElement("li");
+          listItem.textContent = event.data.body;
+          postDiv.appendChild(listItem);
+        });
+      }
+    </script>
+  </body>
+</html>

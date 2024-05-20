@@ -1,74 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise 1.5</title>
+    <style>
+      .loader {
+        border: 16px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 16px solid #3498db;
+        width: 120px;
+        height: 120px;
+        -webkit-animation: spin 2s linear infinite;
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Promise 1.5</title>
-  <style>
-    .loader {
-      border: 16px solid #f3f3f3;
-      border-radius: 50%;
-      border-top: 16px solid #3498db;
-      width: 120px;
-      height: 120px;
-      -webkit-animation: spin 2s linear infinite;
-      /* Safari */
-      animation: spin 2s linear infinite;
-      display: none;
-    }
-
-    /* Safari */
-    @-webkit-keyframes spin {
-      0% {
-        -webkit-transform: rotate(0deg);
+        animation: spin 2s linear infinite;
+        display: none;
       }
 
-      100% {
-        -webkit-transform: rotate(360deg);
+      @-webkit-keyframes spin {
+        0% {
+          -webkit-transform: rotate(0deg);
+        }
+
+        100% {
+          -webkit-transform: rotate(360deg);
+        }
       }
-    }
 
-    @keyframes spin {
-      0% {
-        transform: rotate(0deg);
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <button id="load">Click</button>
+    <div class="loader" id="loader"></div>
+    <script>
+      let resolvePromise;
+      let rejectPromise;
+
+      function showLoader() {
+        const loader = document.getElementById("loader");
+        loader.style.display = "block";
+        setTimeout(() => {
+          resolvePromise("done");
+        }, 2000);
       }
 
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-  </style>
-</head>
+      const loading = new Promise((resolve, reject) => {
+        resolvePromise = resolve;
+        rejectPromise = reject;
+      });
 
-<body>
-  <button id="load">Click</button>
-  <div class="loader" id="loader"></div>
-  <script>
-    let resolvePromise;
-    let rejectPromise;
+      document.getElementById("load").addEventListener("click", showLoader);
 
-    function showLoader() {
-      const loader = document.getElementById("loader");
-      loader.style.display = "block";
-      setTimeout(() => {
-        resolvePromise("done");
-      }, 2000);
-    }
-
-    const loading = new Promise((resolve, reject) => {
-      resolvePromise = resolve;
-      rejectPromise = reject;
-    });
-
-    document.getElementById("load").addEventListener("click", showLoader);
-
-    loading.then((result) => {
-      const loader = document.getElementById("loader");
-      loader.style.display = "none";
-      console.log(result); // logs "done" when resolved
-    });
-  </script>
-</body>
-
+      loading.then((result) => {
+        const loader = document.getElementById("loader");
+        loader.style.display = "none";
+        console.log(result); // logs "done" when resolved
+      });
+    </script>
+  </body>
 </html>
