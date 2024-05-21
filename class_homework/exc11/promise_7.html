@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise 7</title>
+  </head>
+  <body>
+    <div>
+      <p id="posts"></p>
+      <p id="users"></p>
+      <p id="comments"></p>
+    </div>
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+    <script>
+      const posts = "https://jsonplaceholder.typicode.com/posts";
+      const users = "https://jsonplaceholder.typicode.com/users";
+      const comments = "https://jsonplaceholder.typicode.com/comments";
+      function updateDom(elementId, text) {
+        document.getElementById(elementId) = text;
+      }
+
+      function getPostsAmount() {
+        return axios.get(posts).then(function (response) {
+          const postsamount = response.data.length;
+          const postsP = document.getElementById("posts");
+          postsP.innerText = `The amount of posts in this API: ${postsamount}`;
+          return postsamount;
+        });
+      }
+
+      function getUsersAmount() {
+        return axios.get(users).then(function (response) {
+          const usersamount = response.data.length;
+          const usersP = document.getElementById("users");
+          usersP.innerText = `The amount of users in this API: ${usersamount}`;
+          return usersamount;
+        });
+      }
+
+      function getCommentsAmount() {
+        return axios.get(comments).then(function (response) {
+          const commentsamount = response.data.length;
+          const commentsP = document.getElementById("comments");
+          commentsP.innerText = `The amount of comments in this API: ${commentsamount}`;
+          return commentsamount;
+        });
+      }
+
+      getPostsAmount()
+        .then((postAmount) => {
+          console.log(postAmount);
+          return getUsersAmount();
+        })
+        .then((userAmount) => {
+          console.log(userAmount);
+          return getCommentsAmount();
+        })
+        .then((commentsAmount) => {
+          console.log(commentsAmount);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+    </script>
+  </body>
+</html>

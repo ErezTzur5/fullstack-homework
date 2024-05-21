@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>promise 3.5</title>
+  </head>
+  <body>
+    <!--  
+ 	
+Given the following functions
+const driveToGasStation = new Promise( (resolve , reject) =>{ resolve('Drive to gas station') } );
+const fillTheCar = new Promise( (resolve , reject) =>{resolve('Fill the car')} );
+const driveToResturant = new Promise( (resolve , reject) =>{resolve('drive to restaurant)} );
+
+You need to use these functions and promise chaining so the following will
+be written to the console in this order
+Drive to gas station
+Fill the car
+drive to resturant -->
+
+    <script>
+      const driveToGasStation = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("Drive to gas station");
+        }, 2000);
+      });
+
+      const fillTheCar = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("Fill the car");
+        }, 1000);
+      });
+
+      const driveToResturant = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("drive to restaurant");
+        }, 3000);
+      });
+
+      driveToGasStation
+        .then((result) => {
+          console.log(result);
+          return fillTheCar;
+        })
+        .then((result) => {
+          console.log(result);
+          return driveToResturant;
+        })
+        .then((result) => {
+          console.log(result);
+        });
+    </script>
+  </body>
+</html>
