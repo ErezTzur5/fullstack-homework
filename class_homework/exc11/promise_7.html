@@ -17,14 +17,13 @@
       const users = "https://jsonplaceholder.typicode.com/users";
       const comments = "https://jsonplaceholder.typicode.com/comments";
       function updateDom(elementId, text) {
-        document.getElementById(elementId) = text;
+        document.getElementById(elementId).innerText = text;
       }
 
       function getPostsAmount() {
         return axios.get(posts).then(function (response) {
           const postsamount = response.data.length;
-          const postsP = document.getElementById("posts");
-          postsP.innerText = `The amount of posts in this API: ${postsamount}`;
+          updateDom("posts", `The amount of posts in this API: ${postsamount}`);
           return postsamount;
         });
       }
@@ -32,8 +31,7 @@
       function getUsersAmount() {
         return axios.get(users).then(function (response) {
           const usersamount = response.data.length;
-          const usersP = document.getElementById("users");
-          usersP.innerText = `The amount of users in this API: ${usersamount}`;
+          updateDom("users", `The amount of users in this API: ${usersamount}`);
           return usersamount;
         });
       }
@@ -41,8 +39,10 @@
       function getCommentsAmount() {
         return axios.get(comments).then(function (response) {
           const commentsamount = response.data.length;
-          const commentsP = document.getElementById("comments");
-          commentsP.innerText = `The amount of comments in this API: ${commentsamount}`;
+          updateDom(
+            "comments",
+            `The amount of comments in this API: ${commentsamount}`
+          );
           return commentsamount;
         });
       }
