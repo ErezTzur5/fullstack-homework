@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>async_await_1</title>
+  </head>
+  <body>
+    <script>
+      function pause(sleepMs) {
+        return new Promise((resolve) => setTimeout(resolve, sleepMs));
+      }
+
+      async function delayExecution() {
+        console.log(new Date());
+        await pause(5000);
+        console.log(new Date());
+      }
+
+      delayExecution();
+    </script>
+  </body>
+</html>
