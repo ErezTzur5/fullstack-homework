@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise 2 class</title>
+  </head>
+  <body>
+    <div>
+      <p id="posts"></p>
+      <p id="users"></p>
+      <p id="comments"></p>
+      <p id="sumNum"></p>
+    </div>
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+    <script>
+      const posts = "https://jsonplaceholder.typicode.com/posts";
+      const users = "https://jsonplaceholder.typicode.com/users";
+      const comments = "https://jsonplaceholder.typicode.com/comments";
+
+      function updateDom(elementId, text) {
+        document.getElementById(elementId).innerText = text;
+      }
+
+      function getPostsAmount() {
+        return axios.get(posts).then(function (response) {
+          const postsamount = response.data.length;
+          updateDom("posts", `The amount of posts in this API: ${postsamount}`);
+          return postsamount;
+        });
+      }
+
+      function getUsersAmount() {
+        return axios.get(users).then(function (response) {
+          const usersamount = response.data.length;
+          updateDom("users", `The amount of users in this API: ${usersamount}`);
+          return usersamount;
+        });
+      }
+
+      function getCommentsAmount() {
+        return axios.get(comments).then(function (response) {
+          const commentsamount = response.data.length;
+          updateDom(
+            "comments",
+            `The amount of comments in this API: ${commentsamount}`
+          );
+          return commentsamount;
+        });
+      }
+
+      let sum = 0;
+      async function callPromises() {
+        try {
+          const postsamount = await getPostsAmount();
+          console.log(postsamount);
+          sum += postsamount;
+
+          const usersamount = await getUsersAmount();
+          console.log(usersamount);
+          sum += usersamount;
+
+          const commentsamount = await getCommentsAmount();
+          console.log(commentsamount);
+          sum += commentsamount;
+          updateDom("sumNum", `The sum of all numbers: ${sum}`);
+        } catch (error) {
+          console.error(error);
+        }
+      }
+      callPromises();
+      //   Promise.all([
+      //     getPostsAmount(),
+      //     getUsersAmount(),
+      //     getCommentsAmount(),
+      //   ]).then((result) => {
+      //     console.log(result);
+      //     let sum = 0;
+      //     result.forEach((element) => {
+      //       sum += element;
+      //     });
+      //     updateDom("sumNum", `The sum of all numbers: ${sum}`);
+      //   });
+    </script>
+  </body>
+</html>

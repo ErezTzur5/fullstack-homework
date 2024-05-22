@@ -17,13 +17,27 @@
           resolve("world");
         }, 2000);
       });
-      async function callPromises() {
-        const result2 = await world;
-        console.log(result2);
+      const problem = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          reject("There's a problem");
+        }, 2000);
+      });
 
-        const result1 = await hello;
-        console.log(result1);
+      async function callPromises() {
+        try {
+          const result1 = await hello;
+          console.log(result1);
+
+          const result2 = await world;
+          console.log(result2);
+
+          const result3 = await problem;
+          console.log(result3);
+        } catch (error) {
+          console.error(error);
+        }
       }
+
       callPromises();
     </script>
   </body>
