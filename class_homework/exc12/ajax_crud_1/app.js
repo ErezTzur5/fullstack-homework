@@ -1,112 +1,174 @@
+let startIndex = 0;
 document.addEventListener('DOMContentLoaded', () => {
-    const baseURL = 'http://localhost:3000/users';
+    const apiUrl = 'http://localhost:8001';
+    const booksUrl = `${apiUrl}/books`;
 
-    const getAllButton = document.getElementById('getAll');
     const usersTableBody = document.querySelector('#usersTable tbody');
-    const createUserForm = document.getElementById('createUserForm');
-    const deleteUserForm = document.getElementById('deleteUserForm');
-    const updateUserForm = document.getElementById('updateUserForm');
+    const booksTableBody = document.querySelector('#booksTable tbody');
 
-    // Function to fetch all users
-    const getAllUsers = async () => {
+    const createUserForm = document.getElementById('createUserForm');
+    const createFirstNameInput = document.getElementById('createFirstName');
+    const createLastNameInput = document.getElementById('createLastName');
+
+    const deleteUserForm = document.getElementById('deleteUserForm');
+    const deleteUserIdInput = document.getElementById('deleteUserId');
+
+    const updateUserForm = document.getElementById('updateUserForm');
+    const updateUserIdInput = document.getElementById('updateUserId');
+    const updateFirstNameInput = document.getElementById('updateFirstName');
+    const updateLastNameInput = document.getElementById('updateLastName');
+
+    const prevPageButton = document.getElementById('prevPage');
+    const nextPageButton = document.getElementById('nextPage');
+    const pageNumberDisplay = document.getElementById('pageNumber');
+    const limit = 500;
+    let currentPage = 1;
+
+    const fetchUsers = async () => {
         try {
-            const response = await fetch(baseURL);
+            const response = await fetch(`${apiUrl}/users`);
             const users = await response.json();
-            usersTableBody.innerHTML = '';
-            users.forEach(user => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${user.id}</td>
-                    <td>${user.firstName}</td>
-                    <td>${user.lastName}</td>
-                `;
-                usersTableBody.appendChild(row);
-            });
+            displayUsers(users);
         } catch (error) {
             console.error('Error fetching users:', error);
         }
     };
 
-    // Function to create a new user
+    const displayUsers = (users) => {
+        usersTableBody.innerHTML = '';
+        users.forEach(user => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${user.id}</td>
+                <td>${user.firstName}</td>
+                <td>${user.lastName}</td>
+            `;
+            usersTableBody.appendChild(row);
+        });
+    };
+
     const createUser = async (event) => {
         event.preventDefault();
-        const firstName = document.getElementById('createFirstName').value;
-        const lastName = document.getElementById('createLastName').value;
+        const newUser = {
+            firstName: createFirstNameInput.value,
+            lastName: createLastNameInput.value,
+        };
 
         try {
-            const response = await fetch(baseURL);
-            const users = await response.json();
-            const newId = users.length > 0 ? Math.max(...users.map(user => user.id)) + 1 : 1;
-
-            const newUser = {
-                id: newId,
-                firstName,
-                lastName
-            };
-
-            await fetch(baseURL, {
+            await fetch(`${apiUrl}/users`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(newUser)
+                body: JSON.stringify(newUser),
             });
-
-            getAllUsers();
-            createUserForm.reset();
+            createFirstNameInput.value = '';
+            createLastNameInput.value = '';
+            fetchUsers();
         } catch (error) {
             console.error('Error creating user:', error);
         }
     };
 
-    // Function to delete a user
     const deleteUser = async (event) => {
         event.preventDefault();
-        const userId = document.getElementById('deleteUserId').value;
+        const userId = deleteUserIdInput.value;
 
         try {
-            await fetch(`${baseURL}/${userId}`, {
-                method: 'DELETE'
+            await fetch(`${apiUrl}/users/${userId}`, {
+                method: 'DELETE',
             });
-
-            getAllUsers();
-            deleteUserForm.reset();
+            deleteUserIdInput.value = '';
+            fetchUsers();
         } catch (error) {
             console.error('Error deleting user:', error);
         }
     };
 
-    // Function to update a user
     const updateUser = async (event) => {
         event.preventDefault();
-        const userId = document.getElementById('updateUserId').value;
-        const firstName = document.getElementById('updateFirstName').value;
-        const lastName = document.getElementById('updateLastName').value;
+        const updatedUser = {
+            firstName: updateFirstNameInput.value,
+            lastName: updateLastNameInput.value,
+        };
 
         try {
-            const updatedUser = {
-                firstName,
-                lastName
-            };
-
-            await fetch(`${baseURL}/${userId}`, {
+            await fetch(`${apiUrl}/users/${updateUserIdInput.value}`, {
                 method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(updatedUser)
+                body: JSON.stringify(updatedUser),
             });
-
-            getAllUsers();
-            updateUserForm.reset();
+            updateUserIdInput.value = '';
+            updateFirstNameInput.value = '';
+            updateLastNameInput.value = '';
+            fetchUsers();
         } catch (error) {
             console.error('Error updating user:', error);
         }
     };
 
-    // Event listeners
-    getAllButton.addEventListener('click', getAllUsers);
+    const fetchBooks = async (page) => {
+        try {
+            console.log(`Fetching books for page ${page}`); // Add this line to log the page number
+            const response = await fetch(`${booksUrl}?_page=${page}&_limit=${limit}`);
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            const books = await response.json();
+            console.log('adasds',books);
+            console.log(`Fetched books for page ${page}:`, books); // Debugging log
+            displayBooks(books);
+            updatePaginationButtons(page, books.length);
+        } catch (error) {
+            console.error('Error fetching books:', error);
+        }
+    };
+    
+    const displayBooks = (books) => {
+        booksTableBody.innerHTML = ''; // Clear the table body before adding new books
+        console.log(startIndex);
+        const endIndex = Math.min(startIndex + 50); // Calculate the end index
+    
+        // Loop through the books array from startIndex to endIndex
+        for (let i = startIndex; i < endIndex; i++) {
+            const book = books[i];
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${book.id}</td>
+                <td>${book.name}</td>
+                <td>${book.author}</td>
+                <td>${book.numPages}</td>
+            `;
+            booksTableBody.appendChild(row);
+        }
+        startIndex += 50;
+    };
+    
+    const updatePaginationButtons = (page, fetchedBooksCount) => {
+        currentPage = page;
+        pageNumberDisplay.textContent = `Page ${page}`;
+        prevPageButton.disabled = page === 1;
+        nextPageButton.disabled = fetchedBooksCount < limit;
+    };
+
     createUserForm.addEventListener('submit', createUser);
     deleteUserForm.addEventListener('submit', deleteUser);
     updateUserForm.addEventListener('submit', updateUser);
+
+    prevPageButton.addEventListener('click', () => {
+        if (currentPage > 1) {
+            fetchBooks(currentPage - 1);
+        }
+    });
+    
+    nextPageButton.addEventListener('click', () => {
+        console.log('Next button clicked');
+        fetchBooks(currentPage + 1);
+    });
+
+    // Initial fetch to populate the table
+    fetchUsers();
+    fetchBooks(currentPage);
 });
