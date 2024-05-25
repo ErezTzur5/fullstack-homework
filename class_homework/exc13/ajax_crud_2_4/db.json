@@ -1,0 +1,43 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "firstName": "FirstName1",
+      "lastName": "LastName1"
+    },
+    {
+      "id": "2",
+      "firstName": "FirstName2",
+      "lastName": "LastName2"
+    },
+    {
+      "firstName": "yuval",
+      "lastName": "bukris",
+      "id": "3"
+    },
+    {
+      "id": "29ea",
+      "firstName": "erez",
+      "lastName": "tzur"
+    },
+    {
+      "id": "6b9a",
+      "firstName": "erez",
+      "lastName": "erez"
+    }
+  ],
+  "books": [
+    {
+      "name": "Yuna",
+      "author": "J",
+      "numPages": 80,
+      "id": "67bc"
+    },
+    {
+      "name": "ssss",
+      "author": "ssss",
+      "numPages": 80,
+      "id": "crd37g28x"
+    }
+  ]
+}
