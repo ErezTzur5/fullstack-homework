@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const apiUrl = 'http://localhost:8001';
     const booksUrl = `${apiUrl}/books`;
-
+    let startIndex = 0;
     const booksTableBody = document.querySelector('#booksTable tbody');
     const createBookForm = document.getElementById('createBookForm');
     const createBookNameInput = document.getElementById('createBookName');
@@ -17,16 +17,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevPageButton = document.getElementById('prevPage');
     const nextPageButton = document.getElementById('nextPage');
     const pageNumberDisplay = document.getElementById('pageNumber');
-    const limit = 50;
-    let startIndex = 0;
+    const limit = 10;
     let currentPage = 1;
-    let booksData = []; // Store books data globally
+    let totalBooks = 0;
 
     const fetchBooks = async (page) => {
         try {
+            console.log(`Fetching books for page: ${page}`);
             const response = await fetch(`${booksUrl}?_page=${page}&_limit=${limit}`);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
             const books = await response.json();
-            booksData = books; // Update books data globally
+            totalBooks = parseInt(response.headers.get('X-Total-Count'), 10); // JSON Server provides this header
             displayBooks(books);
             updatePaginationButtons(page, books.length);
         } catch (error) {
@@ -34,8 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+
+
     const displayBooks = (books) => {
-        booksTableBody.innerHTML = '';
+        booksTableBody.innerHTML = ''; // Clear the table body before adding new books
+
+        // Loop through the books array and display them in the table
         books.forEach(book => {
             const row = document.createElement('tr');
             row.innerHTML = `
@@ -47,14 +54,12 @@ document.addEventListener('DOMContentLoaded', () => {
             booksTableBody.appendChild(row);
         });
     };
-
     const createBook = async (event) => {
         event.preventDefault();
         const newBook = {
             name: createBookNameInput.value,
             author: createBookAuthorInput.value,
-            numPages: parseInt(createBookPagesInput.value),
-            id: generateId() // Generate a unique ID for the new book
+            numPages: parseInt(createBookPagesInput.value, 10)
         };
 
         try {
@@ -92,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const updatedBook = {
             name: updateBookNameInput.value,
             author: updateBookAuthorInput.value,
-            numPages: parseInt(updateBookPagesInput.value)
+            numPages: parseInt(updateBookPagesInput.value, 10)
         };
 
         try {
@@ -114,12 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentPage = page;
         pageNumberDisplay.textContent = `Page ${page}`;
         prevPageButton.disabled = page === 1;
-        nextPageButton.disabled = fetchedBooksCount < limit;
-    };
-
-    const generateId = () => {
-        // Generate a random ID (not guaranteed to be unique, but good enough for this example)
-        return Math.random().toString(36).substr(2, 9);
+        nextPageButton.disabled = fetchedBooksCount < limit || (totalBooks && page * limit >= totalBooks);
     };
 
     createBookForm.addEventListener('submit', createBook);
@@ -131,11 +131,10 @@ document.addEventListener('DOMContentLoaded', () => {
             fetchBooks(currentPage - 1);
         }
     });
-    
+
     nextPageButton.addEventListener('click', () => {
         fetchBooks(currentPage + 1);
     });
 
-    // Initial fetch to populate the table
     fetchBooks(currentPage);
 });

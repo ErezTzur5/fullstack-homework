@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error('Network response was not ok ' + response.statusText);
             }
             const books = await response.json();
-            console.log('adasds',books);
+            console.log('adasds', books);
             console.log(`Fetched books for page ${page}:`, books); // Debugging log
             displayBooks(books);
             updatePaginationButtons(page, books.length);
@@ -125,12 +125,12 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Error fetching books:', error);
         }
     };
-    
+
     const displayBooks = (books) => {
         booksTableBody.innerHTML = ''; // Clear the table body before adding new books
         console.log(startIndex);
         const endIndex = Math.min(startIndex + 50); // Calculate the end index
-    
+
         // Loop through the books array from startIndex to endIndex
         for (let i = startIndex; i < endIndex; i++) {
             const book = books[i];
@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         startIndex += 50;
     };
-    
+
     const updatePaginationButtons = (page, fetchedBooksCount) => {
         currentPage = page;
         pageNumberDisplay.textContent = `Page ${page}`;
@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
             fetchBooks(currentPage - 1);
         }
     });
-    
+
     nextPageButton.addEventListener('click', () => {
         console.log('Next button clicked');
         fetchBooks(currentPage + 1);
