@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="./index.css" />
+  <title>Books Management</title>
+</head>
+
+<body>
+  <div class="navbar">
+    <a href="./index.html">Users</a>
+    <a href="./books.html">Books</a>
+  </div>
+
+  <h2>Books:</h2>
+
+  <h2>Create Book</h2>
+  <form id="createBookForm">
+    <div>
+      <label for="createBookName">Book Name:</label>
+      <input type="text" id="createBookName" required />
+    </div>
+    <div>
+      <label for="createBookAuthor">Author:</label>
+      <input type="text" id="createBookAuthor" required />
+    </div>
+    <div>
+      <label for="createBookPages">Number of Pages:</label>
+      <input type="number" id="createBookPages" required />
+    </div>
+    <button type="submit">Create Book</button>
+  </form>
+
+  <h2>Delete Book</h2>
+  <form id="deleteBookForm">
+    <div>
+      <label for="deleteBookId">Book ID:</label>
+      <input type="number" id="deleteBookId" required />
+    </div>
+    <button type="submit">Delete Book</button>
+  </form>
+
+  <h2>Update Book</h2>
+  <form id="updateBookForm">
+    <div>
+      <label for="updateBookId">Book ID:</label>
+      <input type="text" id="updateBookId" required />
+    </div>
+    <div>
+      <label for="updateBookName">Book Name:</label>
+      <input type="text" id="updateBookName" required />
+    </div>
+    <div>
+      <label for="updateBookAuthor">Author:</label>
+      <input type="text" id="updateBookAuthor" required />
+    </div>
+    <div>
+      <label for="updateBookPages">Number of Pages:</label>
+      <input type="text" id="updateBookPages" required />
+    </div>
+    <button type="submit">Update Book</button>
+  </form>
+
+  <table id="booksTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Author</th>
+        <th>Number of Pages</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <div class="pagination">
+    <button id="prevPage" disabled>Previous</button>
+    <span id="pageNumber">Page 1</span>
+    <button id="nextPage">Next</button>
+  </div>
+
+  <script src="app_books.js"></script>
+</body>
+
+</html>

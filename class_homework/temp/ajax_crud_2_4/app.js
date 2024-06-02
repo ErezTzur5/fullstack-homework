@@ -1,11 +1,10 @@
-const apiUrl = "http://localhost:8001"; // Assuming your JSON Server is running on localhost:8001
-const limit = 10; // Number of users to display per page
-let currentPage = 1; // Current page number
+const apiUrl = "http://localhost:8001";
+const limit = 10;
+let currentPage = 1;
 
-// Function to fetch users from the server
-async function fetchUsers(page) {
+async function fetchUsers() {
     try {
-        const response = await fetch(`${apiUrl}/users?_page=${page}&_limit=${limit}`);
+        const response = await fetch(`${apiUrl}/users?_page=${currentPage}&_limit=${limit}`);
         if (!response.ok) {
             throw new Error("Failed to fetch users");
         }
@@ -16,16 +15,15 @@ async function fetchUsers(page) {
     }
 }
 
-// Function to render users in the table
 function renderUsers(users) {
     const tableBody = document.querySelector("#usersTable tbody");
     tableBody.innerHTML = "";
     users.forEach((user) => {
         const row = `<tr>
-      <td>${user.id}</td>
-      <td>${user.firstName}</td>
-      <td>${user.lastName}</td>
-    </tr>`;
+          <td>${user.id}</td>
+          <td>${user.firstName}</td>
+          <td>${user.lastName}</td>
+        </tr>`;
         tableBody.innerHTML += row;
     });
 }
@@ -88,7 +86,7 @@ async function updateUser(userId, firstName, lastName) {
 
 // Function to handle the overall CRUD operations for users
 async function manageUsers() {
-    let users = await fetchUsers(currentPage);
+    let users = await fetchUsers();
     renderUsers(users);
 
     document.querySelector("#createUserForm").addEventListener("submit", async (e) => {
@@ -103,7 +101,7 @@ async function manageUsers() {
     });
 
     document.querySelector("#deleteUserForm").addEventListener("submit", async (e) => {
-        e.preventDefault();
+
         const userId = document.querySelector("#deleteUserId").value;
         const success = await deleteUser(userId);
         if (success) {
@@ -113,7 +111,7 @@ async function manageUsers() {
     });
 
     document.querySelector("#updateUserForm").addEventListener("submit", async (e) => {
-        e.preventDefault();
+
         const userId = parseInt(document.querySelector("#updateUserId").value);
         const firstName = document.querySelector("#updateFirstName").value;
         const lastName = document.querySelector("#updateLastName").value;
@@ -127,7 +125,7 @@ async function manageUsers() {
     document.querySelector("#prevPage").addEventListener("click", async () => {
         if (currentPage > 1) {
             currentPage--;
-            users = await fetchUsers(currentPage);
+            users = await fetchUsers();
             renderUsers(users);
             document.querySelector("#pageNumber").innerText = `Page ${currentPage}`;
         }
@@ -135,9 +133,13 @@ async function manageUsers() {
 
     document.querySelector("#nextPage").addEventListener("click", async () => {
         currentPage++;
-        users = await fetchUsers(currentPage);
-        renderUsers(users);
-        document.querySelector("#pageNumber").innerText = `Page ${currentPage}`;
+        users = await fetchUsers();
+        if (users.length > 0) {
+            renderUsers(users);
+            document.querySelector("#pageNumber").innerText = `Page ${currentPage}`;
+        } else {
+            currentPage--;
+        }
     });
 }
 
