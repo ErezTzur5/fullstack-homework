@@ -4,6 +4,7 @@ window.onload = onInit;
 
 function onInit() {
   window.onDeleteBook = onDeleteBook;
+  window.onDeleteBook = onAddBook;
   onGetBooks();
 }
 
@@ -29,5 +30,10 @@ async function onGetBooks() {
 
 async function onDeleteBook(bookId) {
   await bookService.deleteBook(bookId);
+  renderBooks();
+}
+
+async function onAddBook(newBook) {
+  await bookService.addBook(newBook);
   renderBooks();
 }

@@ -21,9 +21,14 @@ async function deleteBook(bookId) {
     return book._id !== bookId;
   });
 }
+async function addBook(newBook) {
+  await storageService.add(STORAGE_KEY, newBook);
+  gBooks.push(newBook);
+}
 
 export const bookService = {
   getLocalBooks,
   getBooks,
   deleteBook,
+  addBook,
 };
